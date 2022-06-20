@@ -65,7 +65,7 @@ function createWindow(): BrowserWindow {
 
 // !Run Python scripts below
 ipcMain.on('getData', (event, args) => {
-  let pathIndex = '../src/assets/scripts';
+  let pathIndex = '/Users/niveytha/Documents/My Documents/Coding/Learn-Angular-Electron/keysight-equipment-simulator/src/assets/scripts';
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time
@@ -74,7 +74,7 @@ ipcMain.on('getData', (event, args) => {
   };
 
   // !Method 1 (Run Python Scripts)
-  PythonShell.run('test_script.py', options, (err, result) => {
+  PythonShell.run('script1.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
     console.log('RESULT: ', result.toString());
