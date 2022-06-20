@@ -1,23 +1,25 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, ipcMain, screen } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
 
+const { PythonShell } = require('python-shell');
+
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
-  serve = args.some(val => val === '--serve');
+  serve = args.some((val) => val === '--serve');
 
 function createWindow(): BrowserWindow {
 
   const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
+  // const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height,
+    width: 1300,
+    height: 680,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -26,8 +28,8 @@ function createWindow(): BrowserWindow {
   });
 
   if (serve) {
-    const debug = require('electron-debug');
-    debug();
+    // const debug = require('electron-debug');
+    // debug();
 
     require('electron-reloader')(module);
     win.loadURL('http://localhost:4200');
@@ -40,11 +42,13 @@ function createWindow(): BrowserWindow {
       pathIndex = '../dist/index.html';
     }
 
-    win.loadURL(url.format({
-      pathname: path.join(__dirname, pathIndex),
-      protocol: 'file:',
-      slashes: true
-    }));
+    win.loadURL(
+      url.format({
+        pathname: path.join(__dirname, pathIndex),
+        protocol: 'file:',
+        slashes: true
+      })
+    );
   }
 
   // Emitted when the window is closed.
@@ -58,11 +62,52 @@ function createWindow(): BrowserWindow {
   return win;
 }
 
+
+// !Run Python scripts below
+ipcMain.on('getData', (event, args) => {
+  let pathIndex = '../src/assets/scripts';
+  let options = {
+    mode: 'text',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: path.join(__dirname, pathIndex),
+    args: args, //An argument which can be accessed in the script using sys.argv[1]
+  };
+
+  // Method 1 (Run Python Scripts)
+  PythonShell.run('script1.py', options, (err, result) => {
+    if (err) throw err;
+    // result is an array consisting of messages collected
+    //during execution of script.
+    console.log('result: ', result.toString());
+
+    // Return Data To Angular
+    event.reply('getDataResponse', result);
+  });
+});
+
+/*********************************************************************
+try {
+  // Method 2 (Run Python Scripts)
+  let pathIndex = '../src/assets/scripts/script1.py';
+
+  const python = spawn('python', [path.join(__dirname, pathIndex), 'node.js', 'python']);
+
+  python.stdout.on('data', (data) => {
+    console.log('Pipe data from python script ...', data);
+    largeDataSet.push(data);
+  });
+} catch (e) {
+  throw e;
+}
+*********************************************************************/
+// !Run Python scripts above
+
+
 try {
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
+  // Added 400 ms to fix the black background issue while using transparent window. More details at https://github.com/electron/electron/issues/15947
   app.on('ready', () => setTimeout(createWindow, 400));
 
   // Quit when all windows are closed.
