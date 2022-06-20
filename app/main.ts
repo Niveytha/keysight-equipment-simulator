@@ -73,12 +73,11 @@ ipcMain.on('getData', (event, args) => {
     args: args, //An argument which can be accessed in the script using sys.argv[1]
   };
 
-  // Method 1 (Run Python Scripts)
-  PythonShell.run('script1.py', options, (err, result) => {
+  // !Method 1 (Run Python Scripts)
+  PythonShell.run('test_script.py', options, (err, result) => {
     if (err) throw err;
-    // result is an array consisting of messages collected
-    //during execution of script.
-    console.log('result: ', result.toString());
+    // result is an array consisting of messages collected during execution of script.
+    console.log('RESULT: ', result.toString());
 
     // Return Data To Angular
     event.reply('getDataResponse', result);
