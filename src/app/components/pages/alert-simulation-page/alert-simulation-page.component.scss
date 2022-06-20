@@ -1,0 +1,69 @@
+body {
+    background-color: transparent;
+}
+
+p {
+    margin-bottom: 5%;
+    color: #9F9FA1;
+}
+
+.custom-select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.data {
+    display: none;
+}
+
+select:required:invalid {
+    color: #9F9FA1;
+}
+
+select {
+    /* styling */
+    /* height: 40px;
+    width: 240px;
+    padding-left: 10px; */
+
+    background-color: #464646;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px #0000002e;
+
+    /* display: inline-block; */
+    color: #ffffff;
+    font-size: medium;
+    font-family: "Poppins", sans-serif;
+
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+  
+    /* reset */
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* arrows - to change arrow fill color, add %23 in front of hex color */
+    background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23517DF4'><polygon points='0,0 100,0 50,50'/></svg>");
+    background-position: 
+        calc(100% - 20px) calc(1em + 2px), 
+        calc(100% - 15px) calc(1em + 2px), 100% 0;
+    background-size:
+        15px 15px,
+        15px 15px,
+        10em 10em;
+    background-repeat: no-repeat;
+  }
+
+option[value=""][disabled] {
+    display: none;
+}
+/* option {
+    color: black;
+} */

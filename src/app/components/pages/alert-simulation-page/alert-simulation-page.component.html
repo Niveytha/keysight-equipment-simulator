@@ -1,0 +1,44 @@
+<div>
+    <div style="display: flex; justify-content: space-between">
+        <h1>Choose an alert to simulate: </h1>
+        <div class="custom-select" style="width:240px;">
+            <select id="alert" class="alert" required>
+                <option value="" disabled selected>Alert Type</option>
+                <option value="limit">Limit Change</option>
+                <option value="consecutive">Consecutive Test Failure</option>
+                <option value="testCoverage">Test Coverage Change</option>
+                <option value="component">Component Anomaly</option>
+                <option value="degradation">Degradation Anomaly</option>
+            </select>
+        </div>
+    </div>
+
+    <p>
+        You will be able to define alert-specific variables once the alert has
+        been chosen.
+    </p>
+
+    <div class="content" style="height: 330px;">
+        <div id="limit" class="data">
+            LIMIT CONTENT
+        </div>
+        <div id="consecutive" class="data">
+            CONSECUTIVE TEST COVERAGE CONTENT
+        </div>
+        <div id="testCoverage" class="data">
+            TEST COVERAGE CHANGE CONTENT
+        </div>
+        <div id="component" class="data">
+            COMPONENT ANOMALY
+        </div>
+        <div id="degradation" class="data">
+            DEGRADATION ANOMALY
+        </div>
+    </div>
+
+    <hr class="solid">
+
+    <div class="inline" style="float: right;">
+        <app-button [buttonName]="'Simulate'" [routerLink]="'/end'"></app-button>
+    </div>
+</div>
