@@ -1,50 +1,234 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
 html, body {
   margin: 0;
   padding: 0;
 
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-/* CAN (MUST) BE REMOVED ! Sample Global style */
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  background: url(./assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
-
-  .title {
-    color: white;
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 50px 20px;
-  }
-
-  a {
-    color: #fff !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #ed3330;
-    padding: 20px;
-    border-radius: 5px;
-    display: inline-block;
-    border: none;
-    transition: all 0.4s ease 0s;
-
-    &:hover {
-      background: #fff;
-      color: #ed3330 !important;
-      letter-spacing: 1px;
-      -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-      box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-      transition: all 0.4s ease 0s;
-    }
-  }
+    padding: 0;
 }
 
+body {
+    background-color: #393939;
+    color: white;
+}
+
+hr.solid {
+    border: 1px solid #505050;
+    border-radius: 2px;
+    margin-bottom: 22px;
+}
+
+.centered {
+    display: flex;
+    /* width: 100vw; */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} 
+
+.btn {
+    display: inline-block;
+    background: #517DF4;
+    color: #fff;
+
+    padding: 10px 20px;
+    margin: 5px;
+    width: 125px;
+    height: 45px;
+
+    border: none;
+    border-radius: 45px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: small;
+    font-weight: 500;
+
+    transition: all 0.3s ease 0s;
+    box-shadow: 0px 8px 15px #00000055;
+}
+.btn:focus {
+    outline: none;
+}
+.btn:hover {
+    background: #92a8e3;
+    color: rgb(0, 0, 0);
+
+    transform: translateY(-7px);
+    box-shadow: 0px 15px 20px rgba(151, 170, 224, 0.155);
+}
+.btn:active {
+    transform: scale(0.95);
+}
+
+.form-group {
+    margin-top: 12%;
+    padding-bottom: 6%;
+}
+td {
+    height: 70px;
+}
+label {
+    color: #dcdcdc;
+    font-weight: bolder;
+    font-size: medium;
+    padding-right: 40px;
+}
+input {
+    /* max-width: 180px;  */
+    height: 42px;
+    padding: 15px;
+
+    outline: 0;
+    border: 2px solid transparent;
+    border-radius: .5rem;
+
+    background-color: #ffffff13;
+    box-shadow: none;
+    color: white;
+
+    font-size: medium;
+    font-family: "Poppins", sans-serif;
+
+    transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+input:hover, input:focus {
+    outline: none;
+    border-color: #517DF4;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #C8C8C8;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #C8C8C8;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #C8C8C8;
+}
+
+/* Hide the default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+   
+.checkbox-container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+}
+   
+/* Create a custom checkbox */
+.checkmark {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #ffffff13;
+    transition: all 0.3s;
+    border-radius: 6px;
+}
+   
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #517DF4;
+    animation: pop 0.5s;
+    animation-direction: alternate;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+   
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+   
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 0.35em;
+    top: 0.15em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+   
+@keyframes pop {
+    0% {
+     transform: scale(1);
+    }
+   
+    50% {
+     transform: scale(0.85);
+    }
+   
+    100% {
+     transform: scale(1);
+    }
+}
+
+// !CAN (MUST) BE REMOVED ! Sample Global style
+// .container {
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+
+//   background: url(./assets/background.jpg) no-repeat center fixed;
+//   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+//   background-size: cover; /* version standardisée */
+
+//   .title {
+//     color: white;
+//     margin: 0;
+//     padding: 50px 20px;
+//   }
+
+//   a {
+//     color: #fff !important;
+//     text-transform: uppercase;
+//     text-decoration: none;
+//     background: #ed3330;
+//     padding: 20px;
+//     border-radius: 5px;
+//     display: inline-block;
+//     border: none;
+//     transition: all 0.4s ease 0s;
+
+//     &:hover {
+//       background: #fff;
+//       color: #ed3330 !important;
+//       letter-spacing: 1px;
+//       -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+//       -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+//       box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+//       transition: all 0.4s ease 0s;
+//     }
+//   }
+// }
