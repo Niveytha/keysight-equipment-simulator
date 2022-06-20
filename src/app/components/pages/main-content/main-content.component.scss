@@ -1,0 +1,70 @@
+h3 {
+    font-size: medium;
+}
+
+p {
+    margin-bottom: 1%;
+    color: #9F9FA1;
+}
+
+.inline {
+    display: inline-block; 
+}
+
+#filename {
+    display: flex;
+    justify-content: space-between;
+}
+
+#browse-btn {
+    /* display: inline-block; */
+    background: #6C6C6C;
+    color: #DCDCDC;
+    /* float: end; */
+
+    width: 90px;
+    height: 30px;
+
+    border: none;
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    box-shadow: 2px 2px 7px #00000055 inset;
+}
+
+.batchBtestLabel {
+    background-color: #464646;
+    width: 90px;
+    height: 35px;
+    border-radius: 6px;
+
+    padding-top: 6px;
+    text-align: center;
+}
+
+.column {
+    float: left;
+    /* height: 400px; !TO BE CHANGED TO % */
+}
+  
+.left {
+    width: 39%;
+}
+  
+.right {
+    width: 61%;
+    padding-left: 4%;
+    border-left: 3.5px solid #393939;
+}
+  
+.row {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

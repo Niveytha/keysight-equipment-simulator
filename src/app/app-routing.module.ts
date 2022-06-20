@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './shared/components';
 import { HomeRoutingModule } from './home/home-routing.module';
 import { DetailRoutingModule } from './detail/detail-routing.module';
 import { AppComponent } from './app.component';
+import { MainContentComponent } from './components/pages/main-content/main-content.component';
 
 const routes: Routes = [
   // {
@@ -12,7 +13,7 @@ const routes: Routes = [
   //   redirectTo: 'home',
   //   pathMatch: 'full'
   // },
-  { path: '', component: AppComponent },
+  { path: '', component: MainContentComponent },
   {
     path: '**',
     component: PageNotFoundComponent
@@ -21,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy', enableTracing: true}),
     HomeRoutingModule,
     DetailRoutingModule
   ],

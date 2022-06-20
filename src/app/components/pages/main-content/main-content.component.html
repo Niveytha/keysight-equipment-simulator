@@ -1,0 +1,34 @@
+<div>
+    <h3>File name:</h3>
+    <div id="filename">
+        <p>&lt;Placeholder for filename input
+            field&gt;</p>
+        <button id="browse-btn">Browse...</button>
+    </div>
+
+    <div class="row">
+        <div class="column left" style="background-color:#242424;"> <!-- TODO: change background color -->
+            <div class="batchBtestLabel">
+                @BATCH
+            </div>
+            <app-batch-form></app-batch-form>
+        </div>
+        <div class="column right" style="background-color:#242424;">
+            <div class="batchBtestLabel">
+                @BTEST
+            </div>
+            <app-btest-form></app-btest-form>
+        </div>
+    </div>
+
+    <p>
+        Note: Edit respective fields only if you want redefine the values.<br>
+        Click "Next" to proceed to the next page where you can simulate an alert
+        or click "Finish".
+    </p>
+
+    <div class="inline" style="float: right;">
+        <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
+        <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button>
+    </div>
+</div>

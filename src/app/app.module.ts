@@ -16,12 +16,16 @@ import { DetailModule } from './detail/detail.module';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/pages/sidebar/sidebar.component';
+import { MainContentComponent } from './components/pages/main-content/main-content.component';
+import { BatchFormComponent } from './components/forms/batch-form/batch-form.component';
+import { BtestFormComponent } from './components/forms/btest-form/btest-form.component';
+import { ButtonComponent } from './components/button/button.component';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent],
+  declarations: [AppComponent, SidebarComponent, MainContentComponent, BatchFormComponent, BtestFormComponent, ButtonComponent],
   imports: [
     BrowserModule,
     FormsModule,
