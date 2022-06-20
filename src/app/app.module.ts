@@ -11,15 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { HomeModule } from './home/home.module';
-import { DetailModule } from './detail/detail.module';
+import { HomeModule } from './template-pages/home/home.module';
+import { DetailModule } from './template-pages/detail/detail.module';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/pages/sidebar/sidebar.component';
 import { MainContentComponent } from './components/pages/main-content/main-content.component';
 import { BatchFormComponent } from './components/forms/batch-form/batch-form.component';
 import { BtestFormComponent } from './components/forms/btest-form/btest-form.component';
-import { ButtonComponent } from './components/button/button.component';
+import { ButtonComponent } from './shared/components/button/button.component';
 import { AlertSimulationPageComponent } from './components/pages/alert-simulation-page/alert-simulation-page.component';
 import { FinalPageComponent } from './components/pages/final-page/final-page.component';
 
