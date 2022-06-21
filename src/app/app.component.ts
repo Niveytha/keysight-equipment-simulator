@@ -20,10 +20,10 @@ export class AppComponent {
       console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
       console.log('NodeJS childProcess', this.electronService.childProcess);
 
-      // const data: string[] = ['test', 'test2'];
+      const data: string[] = ['test', 'test2'];
 
       // Sending Data To Electron
-      // this.electronService.sendData(data);
+      this.electronService.sendData(data);
 
       // Receiving Data From Electron
       this.electronService.getData().subscribe((res) => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 
 @Component({
   selector: 'app-alert-simulation-page',
@@ -11,11 +11,11 @@ export class AlertSimulationPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $(function() {
-      $('#alert').on('change', function() {
-        $(".data").hide();
-        $("#" + $(this).val()).fadeIn(300);
-      })
-    });
+    // $(function() {
+    //   $('#alert').on('change', function() {
+    //     $(".data").hide();
+    //     $("#" + $(this).val()).fadeIn(300);
+    //   })
+    // });
   }
 }
