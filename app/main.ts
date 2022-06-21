@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, screen } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -11,7 +11,7 @@ const args = process.argv.slice(1),
 
 function createWindow(): BrowserWindow {
 
-  const electronScreen = screen;
+  // const electronScreen = screen;
   // const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
@@ -23,7 +23,7 @@ function createWindow(): BrowserWindow {
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
-      contextIsolation: false,  // false if you want to run e2e test with Spectron
+      contextIsolation: false, // false if you want to run e2e test with Spectron
     },
   });
 
@@ -46,7 +46,7 @@ function createWindow(): BrowserWindow {
       url.format({
         pathname: path.join(__dirname, pathIndex),
         protocol: 'file:',
-        slashes: true
+        slashes: true,
       })
     );
   }
@@ -65,7 +65,7 @@ function createWindow(): BrowserWindow {
 
 // !Run Python scripts below
 ipcMain.on('getData', (event, args) => {
-  let pathIndex = '/Users/niveytha/Documents/My Documents/Coding/Learn-Angular-Electron/keysight-equipment-simulator/src/assets/scripts';
+  let pathIndex = '../src/assets/scripts';
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time
