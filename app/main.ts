@@ -74,7 +74,7 @@ ipcMain.on('getData', (event, args) => {
   };
 
   // !Method 1 (Run Python Scripts)
-  PythonShell.run('script1.py', options, (err, result) => {
+  PythonShell.run('batch_btest.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
     console.log('RESULT: ', result.toString());
