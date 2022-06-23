@@ -10,7 +10,6 @@ const args = process.argv.slice(1),
   serve = args.some((val) => val === '--serve');
 
 function createWindow(): BrowserWindow {
-
   // const electronScreen = screen;
   // const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
@@ -64,25 +63,47 @@ function createWindow(): BrowserWindow {
 
 
 // !Run Python scripts below
-ipcMain.on('getData', (event, args) => {
-  let pathIndex = '../src/assets/scripts';
-  let options = {
-    mode: 'text',
-    pythonOptions: ['-u'], // get print results in real-time
-    scriptPath: path.join(__dirname, pathIndex),
-    args: args, //An argument which can be accessed in the script using sys.argv[1]
+let pyshell = new PythonShell('src/assets/scripts/script1.py');
+
+pyshell.send(JSON.stringify([10]))
+// let options = {
+//   mode: 'text',
+//   pythonPath: 'Your python path',
+//   pythonOptions: ['-u'],
+//   scriptPath: 'Your script path',
+//   args: [10]
+// };
+
+pyshell.on('message', function(message) {
+  console.log(message);
+})
+
+pyshell.end(function (err) {
+  if (err){
+    throw err;
   };
-
-  // !Method 1 (Run Python Scripts)
-  PythonShell.run('batch_btest2.py', options, (err, result) => {
-    if (err) throw err;
-    // result is an array consisting of messages collected during execution of script.
-    console.log('RESULT: ', result.toString());
-
-    // Return Data To Angular
-    event.reply('getDataResponse', result);
-  });
+  console.log('finished');
 });
+
+// ipcMain.on('getData', (event, args) => {
+//   let pathIndex = '../src/assets/scripts';
+//   let options = {
+//     mode: 'text',
+//     pythonOptions: ['-u'], // get print results in real-time
+//     scriptPath: path.join(__dirname, pathIndex),
+//     args: args, //An argument which can be accessed in the script using sys.argv[1]
+//   };
+
+//   // !Method 1 (Run Python Scripts)
+//   PythonShell.run('script1.py', options, (err, result) => {
+//     if (err) throw err;
+//     // result is an array consisting of messages collected during execution of script.
+//     console.log('RESULT: ', result.toString());
+
+//     // Return Data To Angular
+//     event.reply('getDataResponse', result);
+//   });
+// });
 
 /*********************************************************************
 try {
