@@ -26,6 +26,7 @@ for line in f:
         endTime = line[10]
 
 print(uutType)
+# !send as json
 
 f.close()
 g.close()

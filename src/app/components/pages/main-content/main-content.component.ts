@@ -25,6 +25,7 @@ export class MainContentComponent implements OnInit {
 
       // Receiving Data From Electron
       this.electronService.getData().subscribe((res) => {
+        // !JSON.parse
         console.log(res, 'Electron Data');
       });
     } else {
@@ -33,5 +34,10 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // // Filesystem module
+    // const fs = require("fs");
+
+    // // Dialogs module
+    // const {dialog} = require("electron").remote;
   }
 }

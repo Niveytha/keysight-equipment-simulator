@@ -4,6 +4,9 @@ import * as fs from 'fs';
 import * as url from 'url';
 
 const { PythonShell } = require('python-shell');
+// const { dialog } = require('electron')
+// console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
+
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -27,8 +30,6 @@ function createWindow(): BrowserWindow {
   });
 
   if (serve) {
-    // const debug = require('electron-debug');
-    // debug();
 
     require('electron-reloader')(module);
     win.loadURL('http://localhost:4200');
@@ -52,9 +53,7 @@ function createWindow(): BrowserWindow {
 
   // Emitted when the window is closed.
   win.on('closed', () => {
-    // Dereference the window object, usually you would store window
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
+    // Dereference the window object, usually you would store window in an array if your app supports multi windows, this is the time when you should delete the corresponding element.
     win = null;
   });
 
