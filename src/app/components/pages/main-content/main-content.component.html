@@ -1,34 +1,94 @@
-<div>
-    <h3>File name:</h3>
-    <div id="filename">
-        <p>&lt;Placeholder for filename input
-            field&gt;</p>
-        <button id="browse-btn">Browse...</button>
+<div class="row">
+    <br>
+    <br>
+    <br>
+    <div class="column left" style="background-color: transparent;">
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <label for="projectID">Project ID:</label>
+                    </td>
+                    <td>
+                        <input class="longInput" id="projectID" type="text"
+                            value="1479299-00-D">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="projectRev">Project Revision Label:</label>
+                    </td>
+                    <td>
+                        <input class="longInput" id="projectRev" type="text"
+                            value="T1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fixtureID">Fixture ID:</label>
+                    </td>
+                    <td>
+                        <input class="longInput" id="fixtureID" type="text"
+                            value="593">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="equipmentID">Equipment ID:</label>
+                    </td>
+                    <td>
+                        <input class="longInput" id="equipmentID" type="text"
+                            value="MY58120165">
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-
-    <div class="row">
-        <div class="column left" style="background-color: transparent;">
-            <div class="batchBtestLabel">
-                @BATCH
-            </div>
-            <app-batch-form></app-batch-form>
-        </div>
-        <div class="column right" style="background-color: transparent;">
-            <div class="batchBtestLabel">
-                @BTEST
-            </div>
-            <app-btest-form></app-btest-form>
-        </div>
-    </div>
-
-    <p>
-        Note: Edit respective fields only if you want redefine the values.<br>
-        Click "Next" to proceed to the next page where you can simulate an alert
-        or click "Finish".
-    </p>
-
-    <div class="inline" style="float: right;">
-        <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
-        <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button>
+    <div class="column right" style="background-color: transparent;">
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <label for="noOfBoards">No. of Boards:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" id="noOfBoards" type="text"
+                            value="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="failureRate">Board Failure Rate (%):</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" id="failureRate" type="text"
+                            value="20">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="alertType">Alert:</label>
+                    </td>
+                    <td>
+                        <div class="custom-select">
+                            <select id="alert" class="alert" required>
+                                <option value="" disabled selected>Alert Type</option>
+                                <option value="limit">Limit Change</option>
+                                <option value="consecutive">Consecutive Test
+                                    Failure</option>
+                                <!-- <option value="testCoverage">Test Coverage
+                                    Change</option> -->
+                                <!-- <option value="component">Component Anomaly</option> -->
+                                <option value="degradation">Degradation Anomaly</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>

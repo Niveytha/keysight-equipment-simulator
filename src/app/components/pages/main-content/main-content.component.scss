@@ -11,49 +11,16 @@ p {
     display: inline-block; 
 }
 
-#filename {
-    display: flex;
-    justify-content: space-between;
-}
-
-#browse-btn {
-    /* display: inline-block; */
-    background: #6C6C6C;
-    color: #DCDCDC;
-    /* float: end; */
-
-    width: 90px;
-    height: 30px;
-
-    border: none;
-    border-radius: 2px;
-
-    cursor: pointer;
-
-    box-shadow: 2px 2px 7px #00000055 inset;
-}
-
-.batchBtestLabel {
-    background-color: #464646;
-    width: 90px;
-    height: 35px;
-    border-radius: 6px;
-
-    padding-top: 6px;
-    text-align: center;
-}
-
 .column {
     float: left;
-    /* height: 400px; !TO BE CHANGED TO % */
 }
   
 .left {
-    width: 39%;
+    width: 50%;
 }
   
 .right {
-    width: 61%;
+    width: 50%;
     padding-left: 4%;
     border-left: 3.5px solid #393939;
 }
@@ -68,3 +35,65 @@ p {
     display: table;
     clear: both;
 }
+
+.longInput {
+    width: 150px;
+}
+.shortInput {
+    width: 55px;
+}
+
+// .custom-select {
+//     padding-top: 10px;
+//     padding-bottom: 10px;
+//     position: relative;
+// }
+
+// .data {
+//     display: none;
+// }
+
+// select:required:invalid {
+//     color: #9F9FA1;
+// }
+
+// select {
+//     background-color: #464646;
+//     border: none;
+//     border-radius: 6px;
+
+//     /* display: inline-block; */
+//     color: #ffffff;
+//     font-size: medium;
+//     font-family: "Poppins", sans-serif;
+
+//     line-height: 1.5em;
+//     padding: 0.5em 3.5em 0.5em 1em;
+  
+//     /* reset */
+//     margin: 0;      
+//     -webkit-box-sizing: border-box;
+//     -moz-box-sizing: border-box;
+//     box-sizing: border-box;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+
+//     /* arrows - to change arrow fill color, add %23 in front of hex color */
+//     background-image:
+//         url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23517DF4'><polygon points='0,0 100,0 50,50'/></svg>");
+//     background-position: 
+//         calc(100% - 20px) calc(1em + 2px), 
+//         calc(100% - 15px) calc(1em + 2px), 100% 0;
+//     background-size:
+//         15px 15px,
+//         15px 15px,
+//         10em 10em;
+//     background-repeat: no-repeat;
+// }
+
+// option[value=""][disabled] {
+//     display: none;
+// }
+/* option {
+    color: black;
+} */
