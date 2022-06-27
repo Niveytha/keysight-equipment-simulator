@@ -1,77 +1,94 @@
-<div class="row">
-    <br>
-    <br>
-    <br>
-    <div class="column left" style="background-color: transparent;">
-        <form>
+<form name="myForm" action="action_page.php" onsubmit="return validateForm()"
+    method="post">
+    <div class="row">
+        <br>
+        <br>
+        <br>
+        <div class="column left" style="background-color: transparent;">
+            <!-- <form name="myForm" action="action_page.php"> -->
             <table>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="projectID">Project ID:</label>
                     </td>
                     <td>
-                        <input class="longInput" id="projectID" type="text"
-                            value="1479299-00-D">
+                        <input class="longInput form-control"
+                            name="projectID"
+                            id="projectID"
+                            type="text">
                     </td>
                 </tr>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="projectRev">Project Revision Label:</label>
                     </td>
                     <td>
-                        <input class="longInput" id="projectRev" type="text"
-                            value="T1">
+                        <input class="longInput form-control"
+                            formControlName="projectRev"
+                            id="projectRev"
+                            type="text">
                     </td>
                 </tr>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="fixtureID">Fixture ID:</label>
                     </td>
                     <td>
-                        <input class="longInput" id="fixtureID" type="text"
-                            value="593">
+                        <input class="longInput form-control"
+                            formControlName="fixtureID"
+                            id="fixtureID"
+                            type="text">
                     </td>
                 </tr>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="equipmentID">Equipment ID:</label>
                     </td>
                     <td>
-                        <input class="longInput" id="equipmentID" type="text"
-                            value="MY58120165">
+                        <input class="longInput form-control"
+                            formControlName="equipmentID"
+                            id="equipmentID"
+                            type="text">
                     </td>
                 </tr>
             </table>
-        </form>
-    </div>
-    <div class="column right" style="background-color: transparent;">
-        <form>
+            <!-- </form> -->
+        </div>
+        <div class="column right" style="background-color: transparent;">
+            <!-- <form> -->
             <table>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="noOfBoards">No. of Boards:</label>
                     </td>
                     <td>
-                        <input class="shortInput" id="noOfBoards" type="text"
-                            value="3">
+                        <input class="shortInput form-control"
+                            formControlName="noOfBoards"
+                            id="noOfBoards"
+                            type="text">
                     </td>
                 </tr>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="failureRate">Board Failure Rate (%):</label>
                     </td>
                     <td>
-                        <input class="shortInput" id="failureRate" type="text"
-                            value="20">
+                        <input class="shortInput form-control"
+                            formControlName="failureRate"
+                            id="failureRate"
+                            type="text">
                     </td>
                 </tr>
-                <tr>
+                <tr class="form-group">
                     <td>
                         <label for="alertType">Alert:</label>
                     </td>
                     <td>
                         <div class="custom-select">
-                            <select id="alert" class="alert" required>
+                            <select class="alert form-control"
+                                formControlName="alert"
+                                id="alert"
+                                required>
                                 <option value="" disabled selected>Alert Type</option>
                                 <option value="limit">Limit Change</option>
                                 <option value="consecutive">Consecutive Test
@@ -89,6 +106,9 @@
                     </td>
                 </tr>
             </table>
-        </form>
+            <!-- </form> -->
+        </div>
     </div>
-</div>
+    <input class="btn inline" type="submit" value="Submit" style="float:
+        right;">
+</form>

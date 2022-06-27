@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../../../core/services';
+// import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-main-content',
@@ -34,10 +35,29 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    function validateForm() {
+      let x = document.forms["myForm"]["projectID"].value;
+      if (x == "") {
+        alert("Please fill in all the fields!");
+        return false;
+      }
+    }
+
     // // Filesystem module
     // const fs = require("fs");
 
     // // Dialogs module
     // const {dialog} = require("electron").remote;
   }
+
+  // myForm = new FormGroup({
+  //   projectID: new FormControl('', Validators.required),
+  //   projectRev: new FormControl('', Validators.required),
+  //   fixtureID: new FormControl('', Validators.required),
+  //   equipmentID: new FormControl('', Validators.required),
+
+  //   noOfBoards: new FormControl('', Validators.required),
+  //   failureRate: new FormControl('', Validators.required),
+  //   alert: new FormControl('', Validators.required)
+  // })
 }
