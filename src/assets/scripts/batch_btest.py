@@ -1,7 +1,7 @@
-f = open("src/assets/scripts/i3070_Logs/test.txt", 'r')
-for line in f:
-    print(line)
-f.close()
+# f = open("src/assets/scripts/i3070_Logs/test.txt", 'r')
+# for line in f:
+#     print(line)
+# f.close()
 
 # !file works but delete menu function get variables from batch & btest form
 

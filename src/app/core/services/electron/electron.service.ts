@@ -11,12 +11,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ElectronService {
-  // sendData(data: string[]) {
-  //   throw new Error('Method not implemented.');
-  // }
-  // getData() {
-  //   throw new Error('Method not implemented.');
-  // }
   ipcRenderer: typeof ipcRenderer;
   webFrame: typeof webFrame;
   childProcess: typeof childProcess;

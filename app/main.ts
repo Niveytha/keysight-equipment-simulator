@@ -13,17 +13,37 @@ const args = process.argv.slice(1),
   serve = args.some((val) => val === '--serve');
 
 function createMenu() {
+  const isMac = process.platform === 'darwin'
+
   const template: Electron.MenuItemConstructorOptions[] = [
+    isMac? {
+      label: app.name,
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideOthers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' }
+      ]
+    } : {},
     {
       label: 'View',
       submenu: [
         { role: 'toggleDevTools' },
       ],
     },
+    {
+      label: 'File',
+      submenu: [
+        isMac ? { role: 'close' } : { role: 'quit' }
+      ]
+    },
     { role: 'window', submenu: [
       {
         label: 'New Instance',
-        accelerator: 'Shift+Command+N',
+        accelerator: 'Command+N',
         click: () => {
           createWindow();
         },
@@ -150,8 +170,8 @@ try {
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More details at https://github.com/electron/electron/issues/15947
   app.on('ready', () => {
-    // createMenu();
-    setTimeout(createWindow, 400)
+    createMenu();
+    setTimeout(createWindow, 400);
   });
 
   // Quit when all windows are closed.
