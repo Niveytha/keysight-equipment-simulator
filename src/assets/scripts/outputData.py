@@ -5,11 +5,6 @@ import json
 f = open("src/assets/scripts/i3070_Logs/P1479299-00-D_SPGT19088002596-190503103132-MY58120165-Pass.txt", 'r')
 g = open("src/assets/scripts/i3070_Logs/output_file.txt", 'w')
 
-# changedVars = sys.stdin.readlines()
-# changedVarsJSON = json.loads(changedVars)  # dict with new changed variables
-
-print(sys.argv[1])
-
 changedVars = {"uutType": sys.argv[1],
                "uutTypeRev": sys.argv[2],
                "fixtureID": sys.argv[3],
@@ -20,31 +15,28 @@ changedVars = {"uutType": sys.argv[1],
                "endTime": sys.argv[8]
                }
 
-print(changedVars)
+lines = f.readlines()
 
-# lines = f.readlines()
+batchLine = lines[0].split('|')
+btestLine = lines[1].split('|')
 
-# batchLine = lines[0].split('|')
-# btestLine = lines[1].split('|')
+# !Replace with new values
+batchLine[1] = changedVars["uutType"]
+batchLine[2] = changedVars["uutTypeRev"]
+batchLine[3] = changedVars["fixtureID"]
+batchLine[9] = changedVars["controller"]
 
-# # !Replace with new values
-# batchLine[1] = changedVarsJSON["uutType"]
-# batchLine[2] = changedVarsJSON["uutTypeRev"]
-# batchLine[3] = changedVarsJSON["fixtureID"]
-# batchLine[9] = changedVarsJSON["controller"]
+btestLine[1] = changedVars["boardID"]
+btestLine[3] = changedVars["startTime"]
+btestLine[4] = changedVars["duration"]
+btestLine[10] = changedVars["endTime"]
 
-# btestLine[1] = changedVarsJSON["boardID"]
-# btestLine[3] = changedVarsJSON["startTime"]
-# btestLine[4] = changedVarsJSON["duration"]
-# btestLine[10] = changedVarsJSON["endTime"]
+# !Does not modify original file
+lines[0] = '|'.join(batchLine)
+lines[1] = '|'.join(btestLine)
 
-# # !Does not modify original file
-# lines[0] = '|'.join(batchLine)
-# lines[1] = '|'.join(btestLine)
+for line in lines:
+    g.write(line)
 
-# for line in lines:
-#     g.write(line)
-
-# f.close()
-# g.close()
-# sys.stdout.flush()
+f.close()
+g.close()

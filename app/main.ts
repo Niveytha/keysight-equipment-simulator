@@ -159,7 +159,7 @@ ipcMain.on('sendData', (event, args) => {
   PythonShell.run('outputData.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
-    console.log('RESULT: ', result.toString());
+    // console.log('RESULT: ', result.toString());
 
     // Return Data To Angular
     event.reply('sendDataResponse', result);
