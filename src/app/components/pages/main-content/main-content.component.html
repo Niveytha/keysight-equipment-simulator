@@ -1,14 +1,18 @@
 <div>
-    <h3>File name:</h3>
-    <div id="filename" class="inline" style="float: right;">
-        <!-- <p>&lt;Placeholder for filename input
-            field&gt;</p> -->
-        <!-- <button id="browse-btn">Browse...</button> -->
-        <!-- <label for="myfile">Select a file:</label> -->
-        <input class="custom-file-upload" type="file" id="myfile" name="myfile"><br>
+    <div class="inline" style="display: flex;">
+        <h3>File name:</h3>
+        <!-- <input class="custom-file-upload nostyle" type="file" id="myfile"
+            name="myfile"><br> -->
+        <input type="text" id="fileName" readonly="readonly">
+        <div class="file_input_div" style="display: flex; justify-content:
+            space-evenly;">
+            <input type="button" id="button" value="Browse" style="padding: 2%;"
+                />
+            <input type="file" style="opacity:0; position:relative; left:-40px;"
+                onchange="javascript: document.getElementById('fileName').value=
+                this.value" />
+        </div>
     </div>
-
-    <br><br>
 
     <div class="row">
         <div class="column left" style="background-color: transparent;">
