@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -11,6 +11,28 @@ const { PythonShell } = require('python-shell');
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some((val) => val === '--serve');
+
+function createMenu() {
+  const template: Electron.MenuItemConstructorOptions[] = [
+    {
+      label: 'View',
+      submenu: [
+        { role: 'toggleDevTools' },
+      ],
+    },
+    { role: 'window', submenu: [
+      {
+        label: 'New Instance',
+        accelerator: 'Shift+Command+N',
+        click: () => {
+          createWindow();
+        },
+      }
+    ] }
+  ];
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+}
 
 function createWindow(): BrowserWindow {
   // const electronScreen = screen;
@@ -127,7 +149,10 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More details at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  app.on('ready', () => {
+    // createMenu();
+    setTimeout(createWindow, 400)
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {

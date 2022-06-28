@@ -33,6 +33,13 @@ p {
     box-shadow: 2px 2px 7px #00000055 inset;
 }
 
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
 .batchBtestLabel {
     background-color: #464646;
     width: 90px;
