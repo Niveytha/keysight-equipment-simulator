@@ -28,16 +28,31 @@ function createMenu() {
       ]
     } : {},
     {
-      label: 'View',
-      submenu: [
-        { role: 'toggleDevTools' },
-      ],
-    },
-    {
       label: 'File',
       submenu: [
         isMac ? { role: 'close' } : { role: 'quit' }
       ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        isMac ? { role: 'pasteAndMatchStyle' }: { },
+        { role: 'delete' },
+        { type: 'separator' },
+        { role: 'selectAll' }
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        { role: 'toggleDevTools' },
+      ],
     },
     { role: 'window', submenu: [
       {
@@ -62,7 +77,7 @@ function createWindow(): BrowserWindow {
     x: 0,
     y: 0,
     width: 1300,
-    height: 680,
+    height: 690,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,

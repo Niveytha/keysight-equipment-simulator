@@ -1,4 +1,4 @@
-<div>
+<div style="padding-top: 1%; padding-bottom: 1%;">
     <div class="inline" style="display: flex; justify-content: space-between;">
         <h3>File name:</h3>
         <input type="text" id="fileName" readonly="readonly">
@@ -111,7 +111,8 @@
     </p>
 
     <div class="inline" style="float: right;">
-        <button (click)="sendData()">Next</button>
+        <button class="btn" type="submit" (click)="sendData()"
+            [routerLink]="'/alert-simulation'">Next</button>
         <!-- <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
         <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button> -->
     </div>
