@@ -7,7 +7,6 @@ const { PythonShell } = require('python-shell');
 // const { dialog } = require('electron')
 // console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
 
-
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some((val) => val === '--serve');
@@ -104,9 +103,9 @@ function createWindow(): BrowserWindow {
 
 
 // !Run Python scripts below
-let pyshell = new PythonShell('src/assets/scripts/script1.py');
+// let pyshell = new PythonShell('src/assets/scripts/script1.py');
 
-pyshell.send(JSON.stringify([10]))
+// pyshell.send(JSON.stringify([10]))
 // let options = {
 //   mode: 'text',
 //   pythonPath: 'Your python path',
@@ -115,36 +114,57 @@ pyshell.send(JSON.stringify([10]))
 //   args: [10]
 // };
 
-pyshell.on('message', function(message) {
-  console.log(message);
-})
+// pyshell.on('message', function(message) {
+//   console.log(message);
+// })
 
-pyshell.end(function (err) {
-  if (err){
-    throw err;
+// pyshell.end(function (err) {
+//   if (err){
+//     throw err;
+//   };
+//   console.log('finished');
+// });
+
+// !get data
+ipcMain.on('getData', (event, args) => {
+  let pathIndex = '../src/assets/scripts';
+  let options = {
+    mode: 'text',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: path.join(__dirname, pathIndex),
+    args: args, //An argument which can be accessed in the script using sys.argv[1]
   };
-  console.log('finished');
+
+  PythonShell.run('inputData.py', options, (err, result) => {
+    if (err) throw err;
+    // result is an array consisting of messages collected during execution of script.
+    console.log('RESULT: ', result.toString());
+
+    // Return Data To Angular
+    event.reply('getDataResponse', result);
+  });
 });
 
-// ipcMain.on('getData', (event, args) => {
-//   let pathIndex = '../src/assets/scripts';
-//   let options = {
-//     mode: 'text',
-//     pythonOptions: ['-u'], // get print results in real-time
-//     scriptPath: path.join(__dirname, pathIndex),
-//     args: args, //An argument which can be accessed in the script using sys.argv[1]
-//   };
+// !send data
+ipcMain.on('sendData', (event, args) => {
 
-//   // !Method 1 (Run Python Scripts)
-//   PythonShell.run('batch_btest2.py', options, (err, result) => {
-//     if (err) throw err;
-//     // result is an array consisting of messages collected during execution of script.
-//     console.log('RESULT: ', result.toString());
+  let pathIndex = '../src/assets/scripts';
+  let options = {
+    mode: 'text',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: path.join(__dirname, pathIndex),
+    args: args, //An argument which can be accessed in the script using sys.argv[1]
+  };
 
-//     // Return Data To Angular
-//     event.reply('getDataResponse', result);
-//   });
-// });
+  PythonShell.run('outputData.py', options, (err, result) => {
+    if (err) throw err;
+    // result is an array consisting of messages collected during execution of script.
+    console.log('RESULT: ', result.toString());
+
+    // Return Data To Angular
+    event.reply('sendDataResponse', result);
+  });
+});
 
 /*********************************************************************
 try {

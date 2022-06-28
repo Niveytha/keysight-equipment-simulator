@@ -30,10 +30,10 @@ export class MainContentComponent implements OnInit {
       const data: string[] = ['test', 'test2'];
 
       // Sending Data To Electron
-      this.electronService.sendData(data);
+      this.electronService.sendData(data, 'getData');
 
       // Receiving Data From Electron
-      this.electronService.getData().subscribe((res) => {
+      this.electronService.getData('getDataResponse').subscribe((res) => {
         console.log(res, 'Electron Data');
 
         // !JSON.parse
@@ -46,8 +46,6 @@ export class MainContentComponent implements OnInit {
           this.fixtureID = parseData.fixtureID;
           this.controller = parseData.controller;
 
-          // console.log(this.uutType, parseData.uutType);
-
           this.boardID = parseData.boardID;
           this.startTime = parseData.startTime;
           this.duration = parseData.duration;
@@ -56,11 +54,29 @@ export class MainContentComponent implements OnInit {
           this.ref.detectChanges();
         }
       });
+
+      this.electronService.getData('sendDataResponse').subscribe((res) => {
+        console.log(res, 'sendDataResponse Electron Data');
+      });
     } else {
       console.log('Run in browser');
     }
   }
 
   ngOnInit(): void {
+  }
+
+  sendData() {
+    const data = [
+      this.uutType,
+      this.uutTypeRev,
+      this.fixtureID,
+      this.controller,
+      this.boardID,
+      this.startTime,
+      this.duration,
+      this.endTime
+    ]
+    this.electronService.sendData(data, 'sendData');
   }
 }

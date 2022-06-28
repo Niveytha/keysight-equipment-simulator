@@ -1,1 +1,4 @@
-ey yo
+{@BATCH|ey|yo
+second|line
+{@BTEST|last|line|bruv
+lol|bye

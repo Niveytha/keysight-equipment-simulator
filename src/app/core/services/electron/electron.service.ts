@@ -43,13 +43,14 @@ export class ElectronService {
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);
   }
-  sendData(data) {
-    this.ipcRenderer.send('getData', data);
+
+  sendData(data, topic) {
+    this.ipcRenderer.send(topic, data);
   }
 
-  getData(): Observable<any> {
+  getData(topic): Observable<any> {
     return new Observable<any>(observer => {
-      this.ipcRenderer.once('getDataResponse', (event, arg) => {
+      this.ipcRenderer.once(topic, (event, arg) => {
         observer.next(arg);
       });
     });
