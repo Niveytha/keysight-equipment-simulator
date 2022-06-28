@@ -7,6 +7,10 @@ import * as $ from 'jquery';
   styleUrls: ['./alert-simulation-page.component.scss']
 })
 export class AlertSimulationPageComponent implements OnInit {
+  public testName: string;
+  public lowerLimit: number;
+
+  public failures: number;
 
   constructor() { }
 

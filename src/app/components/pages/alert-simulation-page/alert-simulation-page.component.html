@@ -20,19 +20,56 @@
 
     <div class="content" style="height: 330px;">
         <div id="limit" class="data">
-            LIMIT CONTENT
+            <table>
+                <tr>
+                    <td>
+                        <label for="testName">Test Name:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="testName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="lowerLimit">Lower Limit:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="lowerLimit">
+                    </td>
+                </tr>
+            </table>
         </div>
         <div id="consecutive" class="data">
-            CONSECUTIVE TEST COVERAGE CONTENT
-        </div>
+            <table>
+                <tr>
+                    <td>
+                        <label for="testName">Test Name:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="testName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="failures">No. of Failures:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="failures">
+                    </td>
+                </tr>
+            </table> </div>
         <div id="testCoverage" class="data">
-            TEST COVERAGE CHANGE CONTENT
+            <p>No input required.</p>
         </div>
         <div id="component" class="data">
-            COMPONENT ANOMALY
+            COMPONENT ANOMALY CONTENT
         </div>
         <div id="degradation" class="data">
-            DEGRADATION ANOMALY
+            DEGRADATION ANOMALY CONTENT
         </div>
     </div>
 
