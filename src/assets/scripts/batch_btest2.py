@@ -6,6 +6,7 @@
 
 from datetime import datetime, timedelta
 import random
+import json
        
 f = open("src/assets/scripts/i3070_Logs/P1479299-00-D_SPGT19088002596-190503103132-MY58120165-Pass.txt", 'r')
 g = open("src/assets/scripts/i3070_Logs/output_file.txt", 'w') # !CHANGE FILE NAME ACCORDING TO CHANGES
@@ -25,8 +26,10 @@ for line in f:
         duration = line[4]
         endTime = line[10]
 
-print(uutType)
 # !send as json
+results = [uutType, uutTypeRev, fixtureID, controller, boardID, startTime, duration, endTime]
+resultsJSON = json.dumps(results)
+print(resultsJSON)
 
 f.close()
 g.close()
