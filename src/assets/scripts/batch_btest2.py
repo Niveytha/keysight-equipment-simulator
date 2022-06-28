@@ -27,7 +27,15 @@ for line in f:
         endTime = line[10]
 
 # !send as json
-results = [uutType, uutTypeRev, fixtureID, controller, boardID, startTime, duration, endTime]
+results = {"uutType":uutType, 
+            "uutTypeRev": uutTypeRev,
+            "fixtureID": fixtureID,
+            "controller": controller, 
+            "boardID": boardID, 
+            "startTime": startTime, 
+            "duration": duration, 
+            "endTime": endTime,}
+
 resultsJSON = json.dumps(results)
 print(resultsJSON)
 

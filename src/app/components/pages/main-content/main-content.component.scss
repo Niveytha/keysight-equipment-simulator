@@ -79,10 +79,13 @@ p {
 
 #button{
     position: relative;
-    // left:-1px;
     background-color:#5b7cec;
 }
 
-// input[type=file] {
-//     width: 1px;
-// }
+.shortInput:not(.nostyle){
+    width: 150px;
+}
+
+.longInput:not(.nostyle) {
+    width: 260px;
+}

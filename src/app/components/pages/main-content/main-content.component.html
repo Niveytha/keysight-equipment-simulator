@@ -1,8 +1,6 @@
 <div>
     <div class="inline" style="display: flex; justify-content: space-between;">
         <h3>File name:</h3>
-        <!-- <input class="custom-file-upload nostyle" type="file" id="myfile"
-            name="myfile"><br> -->
         <input type="text" id="fileName" readonly="readonly">
         <div class="file_input_div">
             <input type="button" id="button" value="Browse" style="padding: 2%;"
@@ -15,16 +13,94 @@
 
     <div class="row">
         <div class="column left" style="background-color: transparent;">
-            <div class="batchBtestLabel">
-                @BATCH
-            </div>
-            <app-batch-form></app-batch-form>
+            <div class="batchBtestLabel">@BATCH</div>
+            <table>
+                <tr>
+                    <td>
+                        <label for="uutType">UUT Type:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="uutType">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="uutTypeRev">UUT Type Rev:</label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="uutTypeRev">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fixtureID">Fixture ID: </label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="fixtureID">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="controller">Controller: </label>
+                    </td>
+                    <td>
+                        <input class="shortInput" type="text"
+                            [(ngModel)]="controller">
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="column right" style="background-color: transparent;">
-            <div class="batchBtestLabel">
-                @BTEST
-            </div>
-            <app-btest-form></app-btest-form>
+            <div class="batchBtestLabel">@BTEST</div>
+            <table>
+                <tr>
+                    <td>
+                        <label for="boardID">Board ID:</label>
+                    </td>
+                    <td>
+                        <input class="longInput" type="text"
+                            [(ngModel)]="boardID">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="startDatetime">Start Datetime:</label>
+                    </td>
+                    <td class="inline" style="display: flex; padding-top:
+                        22px;">
+                        <label class="checkbox-container">
+                            <input type="checkbox">
+                            <div class="checkmark"></div>
+                        </label>
+                        Use current time
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="duration">Duration:</label>
+                    </td>
+                    <td class="inline" style="display: flex; padding-top:
+                        22px;">
+                        <label class="checkbox-container">
+                            <input type="checkbox">
+                            <div class="checkmark"></div>
+                        </label>
+                        <input class="longInput" id="duration" type="text"
+                            placeholder="Custom duration in seconds">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="controller">End Datetime:</label> <!-- !fix based on what is chosen -->
+                    </td>
+                    <td style="color: #dcdcdc;">
+                        190503103149
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 
