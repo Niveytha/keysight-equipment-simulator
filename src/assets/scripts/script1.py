@@ -1,8 +1,9 @@
-import sys, json
+import sys
+import json
 
 # reads all the data which is sent to the Python shell
 data = sys.stdin.readlines()
-data = json.loads(data[0])
+data = json.loads(data[0])  # 10
 print(data[0]+10)
 
 # print('#Hello from python#')
