@@ -8,6 +8,7 @@ import { ElectronService } from '../../../core/services';
 })
 export class MainContentComponent implements OnInit {
   model: any = {};
+  showMsg: boolean = false;
 
   constructor(
     private electronService: ElectronService,
@@ -37,13 +38,10 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showDiv = {
-    simulated: false
-  }
-
   onSubmit(result) {
     console.log("Number of boards: " + result.noOfBoards);
     console.log("Failure Rate: " + result.failureRate / 100);
+    this.showMsg= true;
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
  }
 }

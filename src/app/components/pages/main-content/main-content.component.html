@@ -1,76 +1,63 @@
 <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f.value)"
     style="padding:
     5%;" class="centered" novalidate>
-    <div>
-        <label for="noOfBoards">No. of Boards:</label>
-        <input type="number" class="form-control shortInput" name="noOfBoards"
-            [(ngModel)]="model.noOfBoards" #noOfBoards="ngModel" [ngClass]="{
-            'is-invalid': f.submitted && noOfBoards.invalid }" [min]="500"
-            [max]="1000" required/>
-        <!-- !input validation -->
-        <div *ngIf="f.submitted && noOfBoards.invalid" class="invalid-feedback">
-            <div *ngIf="noOfBoards.errors.required">Value is required</div>
-            <div *ngIf="noOfBoards.errors.min">Enter a value within 500-1000</div>
-            <div *ngIf="noOfBoards.errors.max">Enter a value within 500-1000</div>
-        </div>
-    </div>
-    <br>
-    <div>
-        <label for="failureRate">Board Failure Rate (%):</label>
-        <input type="number" class="form-control shortInput" name="failureRate"
-            [(ngModel)]="model.failureRate" #failureRate="ngModel" [ngClass]="{
-            'is-invalid': f.submitted && failureRate.invalid }" [min]="0"
-            [max]="100" required/>
-        <!-- ! input validation -->
-        <div *ngIf="f.submitted && failureRate.invalid"
-            class="invalid-feedback">
-            <div *ngIf="failureRate.errors.required">Value is required</div>
-            <div *ngIf="!failureRate.errors.required && noOfBoards.errors.min">Enter
-                a value within 0-100</div>
-            <div *ngIf="!failureRate.errors.required && noOfBoards.errors.max">Enter
-                a value within 0-100</div>
-        </div>
-    </div>
-    <br>
-    <div>
-        <!-- <input class="btn" type="submit" value="simulate"> -->
-        <input class="btn inline" type="submit" value="SIMULATE" style="float:
-            right;" (click)="showDiv.simulated=true">
-
-        <div class="row" style="padding-top: 5%;">
-            <p *ngIf="showDiv.simulated">Successfully simulated!</p>
-        </div>
-    </div>
-</form>
-
-<!-- <div style="padding: 5%;" class="centered">
     <table>
-        <tr class="form-group">
+        <tr>
             <td>
                 <label for="noOfBoards">No. of Boards:</label>
             </td>
             <td>
-                <input class="shortInput form-control"
-                    [(ngModel)]="noOfBoards"
-                    type="text">
+                <input type="number" class="form-control shortInput"
+                    name="noOfBoards"
+                    [(ngModel)]="model.noOfBoards" #noOfBoards="ngModel"
+                    [ngClass]="{
+                    'is-invalid': f.submitted && noOfBoards.invalid }"
+                    [min]="500"
+                    [max]="1000" required/>
             </td>
         </tr>
-        <tr class="form-group">
+        <tr> <!-- !input validation -->
+            <div *ngIf="f.submitted && noOfBoards.invalid"
+                class="invalid-feedback">
+                <div *ngIf="noOfBoards.errors.required">Value is required</div>
+                <div *ngIf="noOfBoards.errors.min">Enter a value within
+                    500-1000</div>
+                <div *ngIf="noOfBoards.errors.max">Enter a value within
+                    500-1000</div>
+            </div>
+        </tr>
+        <tr>
             <td>
                 <label for="failureRate">Board Failure Rate (%):</label>
             </td>
             <td>
-                <input class="shortInput form-control"
-                    [(ngModel)]="failureRate"
-                    type="text">
+                <input type="number" class="form-control shortInput"
+                    name="failureRate"
+                    [(ngModel)]="model.failureRate" #failureRate="ngModel"
+                    [ngClass]="{
+                    'is-invalid': f.submitted && failureRate.invalid }"
+                    [min]="0"
+                    [max]="100" required/>
             </td>
+        </tr>
+        <tr> <!-- ! input validation -->
+            <div *ngIf="f.submitted && failureRate.invalid"
+                class="invalid-feedback">
+                <div *ngIf="failureRate.errors.required">Value is required</div>
+                <div *ngIf="!failureRate.errors.required &&
+                    noOfBoards.errors.min">Enter
+                    a value within 0-100</div>
+                <div *ngIf="!failureRate.errors.required &&
+                    noOfBoards.errors.max">Enter
+                    a value within 0-100</div>
+            </div>
         </tr>
     </table>
     <br>
-    <input class="btn inline" type="submit" value="SIMULATE" style="float:
-        right;" (click)="showDiv.simulated=true">
+    <input class="btn inline" type="submit" value="simulate" style="float:
+        right;">
 
-    <div class="row" style="padding-top: 5%;">
-        <p *ngIf="showDiv.simulated">Successfully simulated!</p>
+    <div class="row" style="padding-top: 3%;">
+        <h3 *ngIf="showMsg" style="color: #517DF4">Successfully simulated!</h3>
     </div>
-</div> -->
+</form>
