@@ -4,9 +4,6 @@ import * as fs from 'fs';
 import * as url from 'url';
 
 const { PythonShell } = require('python-shell');
-// const { dialog } = require('electron')
-// console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
-
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -58,7 +55,7 @@ function createMenu() {
     { role: 'window', submenu: [
       {
         label: 'New Instance',
-        accelerator: 'Command+N',
+        accelerator: isMac ? 'Command+N' : 'Ctrl+N',
         click: () => {
           createWindow();
         },

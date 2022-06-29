@@ -6,7 +6,6 @@ import { HomeRoutingModule } from './template-pages/home/home-routing.module';
 import { DetailRoutingModule } from './template-pages/detail/detail-routing.module';
 import { MainContentComponent } from './components/pages/main-content/main-content.component';
 import { AlertSimulationPageComponent } from './components/pages/alert-simulation-page/alert-simulation-page.component';
-import { FinalPageComponent } from './components/pages/final-page/final-page.component';
 
 const routes: Routes = [
   // {
@@ -16,7 +15,6 @@ const routes: Routes = [
   // },
   { path: '', component: MainContentComponent },
   { path: 'alert-simulation', component: AlertSimulationPageComponent },
-  { path: 'end', component: FinalPageComponent },
   {
     path: '**',
     component: PageNotFoundComponent
