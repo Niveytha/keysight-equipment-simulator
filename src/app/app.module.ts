@@ -19,8 +19,8 @@ import { HomeModule } from './template-pages/home/home.module';
 import { DetailModule } from './template-pages/detail/detail.module';
 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './components/pages/sidebar/sidebar.component';
-import { MainContentComponent } from './components/pages/main-content/main-content.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
