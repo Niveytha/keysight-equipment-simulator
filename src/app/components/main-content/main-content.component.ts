@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ElectronService } from '../../../core/services';
+import { ElectronService } from '../../core/services';
 
 @Component({
   selector: 'app-main-content',

@@ -15,11 +15,11 @@ import { HomeModule } from './template-pages/home/home.module';
 import { DetailModule } from './template-pages/detail/detail.module';
 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './components/pages/sidebar/sidebar.component';
-import { MainContentComponent } from './components/pages/main-content/main-content.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
 import { ButtonComponent } from './shared/components/button/button.component';
-import { AlertSimulationPageComponent } from './components/pages/alert-simulation-page/alert-simulation-page.component';
-import { FinalPageComponent } from './components/pages/final-page/final-page.component';
+import { AlertSimulationPageComponent } from './components/alert-simulation-page/alert-simulation-page.component';
+import { FinalPageComponent } from './components/final-page/final-page.component';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
