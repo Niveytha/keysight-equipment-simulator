@@ -76,7 +76,7 @@ export class MainContentComponent implements OnInit {
       this.startTime,
       this.duration,
       this.endTime
-    ]
+    ];
     this.electronService.sendData(data, 'sendData');
   }
 }
