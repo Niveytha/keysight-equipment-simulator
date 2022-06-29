@@ -33,31 +33,30 @@
 </div> -->
 <!-- </form> -->
 
-<div style="padding: 5%;" class="centered">
-    <form #inputs="ngForm" (ngSubmit)="onClickSubmit(inputs.value)">
-        <table>
-            <tr>
-                <td>
-                    <label for="noOfBoards">No. of Boards:</label>
-                </td>
-                <td>
-                    <input class="shortInput" type="text" name="noOfBoards"
-                        ngModel>
+<form #inputs="ngForm" (ngSubmit)="onClickSubmit(inputs.value)" style="padding:
+    5%;" class="centered">
+    <table>
+        <tr>
+            <td>
+                <label for="noOfBoards">No. of Boards:</label>
+            </td>
+            <td>
+                <input class="shortInput" type="text" name="noOfBoards"
+                    ngModel>
 
-                </td>
-            </tr>
-            <tr class="form-group">
-                <td>
-                    <label for="failureRate">Board Failure Rate (%):</label>
-                </td>
-                <td>
-                    <input class="shortInput" type="text" name="failureRate"
-                        ngModel>
+            </td>
+        </tr>
+        <tr class="form-group">
+            <td>
+                <label for="failureRate">Board Failure Rate (%):</label>
+            </td>
+            <td>
+                <input class="shortInput" type="text" name="failureRate"
+                    ngModel>
 
-                </td>
-            </tr>
-        </table>
-        <br>
-        <input class="btn" type="submit" value="submit">
-    </form>
-</div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input class="btn" type="submit" value="simulate">
+</form>
