@@ -16,15 +16,14 @@
                     [max]="1000" required/>
             </td>
         </tr>
-        <tr> <!-- !input validation -->
-            <div *ngIf="f.submitted && noOfBoards.invalid"
-                class="invalid-feedback">
-                <div *ngIf="noOfBoards.errors.required">Value is required</div>
-                <div *ngIf="noOfBoards.errors.min">Enter a value within
-                    500-1000</div>
-                <div *ngIf="noOfBoards.errors.max">Enter a value within
-                    500-1000</div>
-            </div>
+        <!-- ! input validation -->
+        <tr *ngIf="f.submitted && noOfBoards.invalid"
+            class="invalid-feedback">
+            <div *ngIf="noOfBoards.errors.required">Value is required</div>
+            <div *ngIf="noOfBoards.errors.min">Enter a value within
+                500-1000</div>
+            <div *ngIf="noOfBoards.errors.max">Enter a value within
+                500-1000</div>
         </tr>
         <tr>
             <td>
@@ -40,17 +39,36 @@
                     [max]="100" required/>
             </td>
         </tr>
-        <tr> <!-- ! input validation -->
-            <div *ngIf="f.submitted && failureRate.invalid"
-                class="invalid-feedback">
-                <div *ngIf="failureRate.errors.required">Value is required</div>
-                <div *ngIf="!failureRate.errors.required &&
-                    noOfBoards.errors.min">Enter
-                    a value within 0-100</div>
-                <div *ngIf="!failureRate.errors.required &&
-                    noOfBoards.errors.max">Enter
-                    a value within 0-100</div>
-            </div>
+        <!-- ! input validation -->
+        <tr *ngIf="f.submitted && failureRate.invalid"
+            class="invalid-feedback">
+            <div *ngIf="failureRate.errors.required">Value is required</div>
+            <div *ngIf="!failureRate.errors.required &&
+                noOfBoards.errors.min">Enter
+                a value within 0-100</div>
+            <div *ngIf="!failureRate.errors.required &&
+                noOfBoards.errors.max">Enter
+                a value within 0-100</div>
+        </tr>
+        <tr>
+            <td>
+                <label for="equipments">Choose an equipment:</label>
+            </td>
+            <td>
+                <select [(ngModel)]="model.equipments" #equipments="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted &&
+                    equipments.invalid}"
+                    name="equipments" required>
+                    <option value="" disabled selected></option>
+                    <option value="i3070">i3070</option>
+                    <option value="Other">Other</option>
+                </select>
+            </td>
+        </tr>
+        <!-- ! input validation -->
+        <tr *ngIf="f.submitted && equipments.invalid"
+            class="invalid-feedback">
+            <div *ngIf="equipments.errors.required">Please choose an equipment</div>
         </tr>
     </table>
     <br>
@@ -58,6 +76,6 @@
         right;">
 
     <div class="row" style="padding-top: 3%;">
-        <h3 *ngIf="showMsg" style="color: #517DF4">Successfully simulated!</h3>
+        <h3 *ngIf="showMsg" style="color: #92a8e3">Successfully simulated!</h3>
     </div>
 </form>

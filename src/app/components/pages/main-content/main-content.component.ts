@@ -39,9 +39,12 @@ export class MainContentComponent implements OnInit {
   }
 
   onSubmit(result) {
+    this.showMsg= true;
+
     console.log("Number of boards: " + result.noOfBoards);
     console.log("Failure Rate: " + result.failureRate / 100);
-    this.showMsg= true;
+    console.log("Equipment chosen: " + result.equipments);
+
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
  }
 }
