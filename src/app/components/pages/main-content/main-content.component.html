@@ -1,114 +1,30 @@
 <form name="myForm" action="action_page.php" onsubmit="return validateForm()"
-    method="post">
-    <div class="row">
-        <br>
-        <br>
-        <br>
-        <div class="column left" style="background-color: transparent;">
-            <!-- <form name="myForm" action="action_page.php"> -->
-            <table>
-                <tr class="form-group">
-                    <td>
-                        <label for="projectID">Project ID:</label>
-                    </td>
-                    <td>
-                        <input class="longInput form-control"
-                            name="projectID"
-                            id="projectID"
-                            type="text">
-                    </td>
-                </tr>
-                <tr class="form-group">
-                    <td>
-                        <label for="projectRev">Project Revision Label:</label>
-                    </td>
-                    <td>
-                        <input class="longInput form-control"
-                            formControlName="projectRev"
-                            id="projectRev"
-                            type="text">
-                    </td>
-                </tr>
-                <tr class="form-group">
-                    <td>
-                        <label for="fixtureID">Fixture ID:</label>
-                    </td>
-                    <td>
-                        <input class="longInput form-control"
-                            formControlName="fixtureID"
-                            id="fixtureID"
-                            type="text">
-                    </td>
-                </tr>
-                <tr class="form-group">
-                    <td>
-                        <label for="equipmentID">Equipment ID:</label>
-                    </td>
-                    <td>
-                        <input class="longInput form-control"
-                            formControlName="equipmentID"
-                            id="equipmentID"
-                            type="text">
-                    </td>
-                </tr>
-            </table>
-            <!-- </form> -->
-        </div>
-        <div class="column right" style="background-color: transparent;">
-            <!-- <form> -->
-            <table>
-                <tr class="form-group">
-                    <td>
-                        <label for="noOfBoards">No. of Boards:</label>
-                    </td>
-                    <td>
-                        <input class="shortInput form-control"
-                            formControlName="noOfBoards"
-                            id="noOfBoards"
-                            type="text">
-                    </td>
-                </tr>
-                <tr class="form-group">
-                    <td>
-                        <label for="failureRate">Board Failure Rate (%):</label>
-                    </td>
-                    <td>
-                        <input class="shortInput form-control"
-                            formControlName="failureRate"
-                            id="failureRate"
-                            type="text">
-                    </td>
-                </tr>
-                <tr class="form-group">
-                    <td>
-                        <label for="alertType">Alert:</label>
-                    </td>
-                    <td>
-                        <div class="custom-select">
-                            <select class="alert form-control"
-                                formControlName="alert"
-                                id="alert"
-                                required>
-                                <option value="" disabled selected>Alert Type</option>
-                                <option value="limit">Limit Change</option>
-                                <option value="consecutive">Consecutive Test
-                                    Failure</option>
-                                <!-- <option value="testCoverage">Test Coverage
-                                    Change</option> -->
-                                <!-- <option value="component">Component Anomaly</option> -->
-                                <option value="degradation">Degradation Anomaly</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                </tr>
-            </table>
-            <!-- </form> -->
-        </div>
-    </div>
-    <input class="btn inline" type="submit" value="Submit" style="float:
+    method="post" style="padding: 5%;" class="centered">
+    <table>
+        <tr class="form-group">
+            <td>
+                <label for="noOfBoards">No. of Boards:</label>
+            </td>
+            <td>
+                <input class="shortInput form-control"
+                    formControlName="noOfBoards"
+                    id="noOfBoards"
+                    type="text">
+            </td>
+        </tr>
+        <tr class="form-group">
+            <td>
+                <label for="failureRate">Board Failure Rate (%):</label>
+            </td>
+            <td>
+                <input class="shortInput form-control"
+                    formControlName="failureRate"
+                    id="failureRate"
+                    type="text">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input class="btn inline" type="submit" value="SIMULATE" style="float:
         right;">
 </form>
