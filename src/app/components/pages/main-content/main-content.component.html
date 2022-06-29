@@ -1,5 +1,6 @@
-<form name="myForm" action="action_page.php" onsubmit="return validateForm()"
-    method="post" style="padding: 5%;" class="centered">
+<!-- <form name="myForm" action="action_page.php" onsubmit="return validateForm()"
+    method="post" style="padding: 5%;" class="centered"> -->
+<div style="padding: 5%;" class="centered">
     <table>
         <tr class="form-group">
             <td>
@@ -8,7 +9,7 @@
             <td>
                 <input class="shortInput form-control"
                     formControlName="noOfBoards"
-                    id="noOfBoards"
+                    [(ngModel)]="noOfBoards"
                     type="text">
             </td>
         </tr>
@@ -31,4 +32,5 @@
     <div class="row" style="padding-top: 5%;">
         <p *ngIf="showDiv.simulated">Successfully simulated!</p>
     </div>
-</form>
+</div>
+<!-- </form> -->

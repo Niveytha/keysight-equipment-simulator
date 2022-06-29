@@ -8,6 +8,8 @@ import { ElectronService } from '../../../core/services';
   styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
+  public noOfBoards: string;
+  public failureRate: string;
 
   constructor(
     private electronService: ElectronService,
