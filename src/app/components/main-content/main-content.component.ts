@@ -19,7 +19,6 @@ export class MainContentComponent implements OnInit {
       console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
       console.log('NodeJS childProcess', this.electronService.childProcess);
 
-      // TODO: What is this for?
       const data: string[] = ['test', 'test2'];
 
       // Sending Data To Electron
