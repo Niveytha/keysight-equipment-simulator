@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../../../core/services';
-// import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-main-content',
@@ -8,8 +7,6 @@ import { ElectronService } from '../../../core/services';
   styleUrls: ['./main-content.component.scss']
 })
 export class MainContentComponent implements OnInit {
-  // public noOfBoards: string;
-  // public failureRate: string;
   model: any = {};
 
   constructor(
@@ -35,29 +32,10 @@ export class MainContentComponent implements OnInit {
     } else {
       console.log('Run in browser');
     }
-    // console.log(this.noOfBoards);
   }
 
   ngOnInit(): void {
-    // function validateForm() {
-    //   let x = document.forms["myForm"]["projectID"].value;
-    //   if (x == "") {
-    //     alert("Please fill in all the fields!");
-    //     return false;
-    //   }
-    // }
   }
-
-  // myForm = new FormGroup({
-  //   projectID: new FormControl('', Validators.required),
-  //   projectRev: new FormControl('', Validators.required),
-  //   fixtureID: new FormControl('', Validators.required),
-  //   equipmentID: new FormControl('', Validators.required),
-
-  //   noOfBoards: new FormControl('', Validators.required),
-  //   failureRate: new FormControl('', Validators.required),
-  //   alert: new FormControl('', Validators.required)
-  // })
 
   showDiv = {
     simulated: false
