@@ -17,10 +17,8 @@ p {
 }
 
 #browse-btn {
-    /* display: inline-block; */
     background: #6C6C6C;
     color: #DCDCDC;
-    /* float: end; */
 
     width: 90px;
     height: 30px;
@@ -34,8 +32,6 @@ p {
 }
 
 .custom-file-upload {
-    // border: 1px solid #ccc;
-    // display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
     font-size: medium;
@@ -53,15 +49,14 @@ p {
 
 .column {
     float: left;
-    /* height: 400px; !TO BE CHANGED TO % */
 }
   
 .left {
-    width: 39%;
+    width: 40%;
 }
   
 .right {
-    width: 61%;
+    width: 60%;
     padding-left: 4%;
     border-left: 3.5px solid #393939;
 }
