@@ -26,5 +26,9 @@
     </table>
     <br>
     <input class="btn inline" type="submit" value="SIMULATE" style="float:
-        right;">
+        right;" (click)="showDiv.simulated=true">
+
+    <div class="row" style="padding-top: 5%;">
+        <p *ngIf="showDiv.simulated">Successfully simulated!</p>
+    </div>
 </form>

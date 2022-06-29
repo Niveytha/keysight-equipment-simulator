@@ -35,19 +35,13 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    function validateForm() {
-      let x = document.forms["myForm"]["projectID"].value;
-      if (x == "") {
-        alert("Please fill in all the fields!");
-        return false;
-      }
-    }
-
-    // // Filesystem module
-    // const fs = require("fs");
-
-    // // Dialogs module
-    // const {dialog} = require("electron").remote;
+    // function validateForm() {
+    //   let x = document.forms["myForm"]["projectID"].value;
+    //   if (x == "") {
+    //     alert("Please fill in all the fields!");
+    //     return false;
+    //   }
+    // }
   }
 
   // myForm = new FormGroup({
@@ -60,4 +54,8 @@ export class MainContentComponent implements OnInit {
   //   failureRate: new FormControl('', Validators.required),
   //   alert: new FormControl('', Validators.required)
   // })
+
+  showDiv = {
+    simulated: false
+  }
 }
