@@ -33,30 +33,41 @@
 </div> -->
 <!-- </form> -->
 
-<form #inputs="ngForm" (ngSubmit)="onClickSubmit(inputs.value)" style="padding:
-    5%;" class="centered">
-    <table>
-        <tr>
-            <td>
-                <label for="noOfBoards">No. of Boards:</label>
-            </td>
-            <td>
-                <input class="shortInput" type="text" name="noOfBoards"
-                    ngModel>
-
-            </td>
-        </tr>
-        <tr class="form-group">
-            <td>
-                <label for="failureRate">Board Failure Rate (%):</label>
-            </td>
-            <td>
-                <input class="shortInput" type="text" name="failureRate"
-                    ngModel>
-
-            </td>
-        </tr>
-    </table>
+<form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f.value)"
+    style="padding:
+    5%;" class="centered" novalidate>
+    <div class="form-group">
+        <label for="noOfBoards">No. of Boards:</label>
+        <input type="number" class="form-control shortInput" name="noOfBoards"
+            [(ngModel)]="model.noOfBoards" #noOfBoards="ngModel" [ngClass]="{
+            'is-invalid': f.submitted && noOfBoards.invalid }" [min]="500"
+            [max]="1000" required/>
+        <!-- !validation -->
+        <div *ngIf="f.submitted && noOfBoards.invalid" class="invalid-feedback">
+            <div *ngIf="noOfBoards.errors.required">Value is required</div>
+            <div *ngIf="noOfBoards.errors.min">Enter a value within 500-1000</div>
+            <div *ngIf="noOfBoards.errors.max">Enter a value within 500-1000</div>
+        </div>
+    </div>
     <br>
-    <input class="btn" type="submit" value="simulate">
+    <div class="form-group">
+        <label for="failureRate">Board Failure Rate (%):</label>
+        <input type="number" class="form-control shortInput" name="failureRate"
+            [(ngModel)]="model.failureRate" #failureRate="ngModel" [ngClass]="{
+            'is-invalid': f.submitted && failureRate.invalid }" [min]="0"
+            [max]="100" required/>
+        <!-- !validation -->
+        <div *ngIf="f.submitted && failureRate.invalid"
+            class="invalid-feedback">
+            <div *ngIf="failureRate.errors.required">Value is required</div>
+            <div *ngIf="!failureRate.errors.required && noOfBoards.errors.min">Enter
+                a value within 0-100</div>
+            <div *ngIf="!failureRate.errors.required && noOfBoards.errors.max">Enter
+                a value within 0-100</div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input class="btn" type="submit" value="simulate">
+    </div>
 </form>

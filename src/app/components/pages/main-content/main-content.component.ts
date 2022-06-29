@@ -10,6 +10,7 @@ import { ElectronService } from '../../../core/services';
 export class MainContentComponent implements OnInit {
   // public noOfBoards: string;
   // public failureRate: string;
+  model: any = {};
 
   constructor(
     private electronService: ElectronService,
@@ -62,8 +63,9 @@ export class MainContentComponent implements OnInit {
     simulated: false
   }
 
-  onClickSubmit(result) {
+  onSubmit(result) {
     console.log("Number of boards: " + result.noOfBoards);
-    console.log("Failure Rate: " + result.failureRate / 100); 
+    console.log("Failure Rate: " + result.failureRate / 100);
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
  }
 }
