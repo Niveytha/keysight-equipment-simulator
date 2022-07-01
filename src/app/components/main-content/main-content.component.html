@@ -123,10 +123,10 @@
                                 uutType.invalid }" required>
                         </td>
                     </tr>
-                    <!-- input validation -->
+                    <!-- !uutType input validation -->
                     <tr *ngIf="f.submitted && uutType.invalid"
                         class="invalid-feedback">
-
+                        <div *ngIf="uutType.errors.required">Value is required</div>
                     </tr>
                     <tr>
                         <td>
@@ -134,8 +134,17 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="uutTypeRev">
+                                [(ngModel)]="model.uutTypeRev"
+                                #uutTypeRev="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted &&
+                                uutTypeRev.invalid }" required>
                         </td>
+                    </tr>
+                    <!-- !uutTypeRev input validation -->
+                    <tr *ngIf="f.submitted && uutTypeRev.invalid"
+                        class="invalid-feedback">
+                        <div *ngIf="uutTypeRev.errors.required">Value is
+                            required</div>
                     </tr>
                     <tr>
                         <td>
@@ -143,8 +152,16 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="fixtureID">
+                                [(ngModel)]="model.fixtureID"
+                                #fixtureID="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted &&
+                                fixtureID.invalid }" required>
                         </td>
+                    </tr>
+                    <!-- !fixtureID input validation -->
+                    <tr *ngIf="f.submitted && fixtureID.invalid"
+                        class="invalid-feedback">
+                        <div *ngIf="fixtureID.errors.required">Value is required</div>
                     </tr>
                     <tr>
                         <td>
@@ -152,8 +169,17 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="controller">
+                                [(ngModel)]="model.controller"
+                                #controller="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted &&
+                                controller.invalid }" required>
                         </td>
+                    </tr>
+                    <!-- !controller input validation -->
+                    <tr *ngIf="f.submitted && controller.invalid"
+                        class="invalid-feedback">
+                        <div *ngIf="controller.errors.required">Value is
+                            required</div>
                     </tr>
                 </table>
             </div>
@@ -166,8 +192,17 @@
                         </td>
                         <td>
                             <input class="longInput" type="text"
-                                [(ngModel)]="boardID">
+                                [(ngModel)]="model.boardID"
+                                #boardID="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted &&
+                                boardID.invalid }" required>
                         </td>
+                    </tr>
+                    <!-- !boardID input validation -->
+                    <tr *ngIf="f.submitted && boardID.invalid"
+                        class="invalid-feedback">
+                        <div *ngIf="boardID.errors.required">Value is
+                            required</div>
                     </tr>
                     <tr>
                         <td>
@@ -222,6 +257,8 @@
             <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
             <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button>
         </div> -->
+        <input class="btn inline" type="submit" value="next" style="float:
+            right;">
     </form>
 
 
