@@ -16,6 +16,8 @@ export class MainContentComponent implements OnInit {
   public duration: string;
   public endTime: string;
 
+  model: any = {};
+
   constructor(
     private electronService: ElectronService,
     private ref:ChangeDetectorRef
@@ -78,5 +80,10 @@ export class MainContentComponent implements OnInit {
       this.endTime
     ];
     this.electronService.sendData(data, 'sendData');
+  }
+
+  onSubmit(result) {
+    console.log("Form submitted!");
+    alert('FORM SUBMITTED!');
   }
 }

@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <!-- !batch form -->
+    <!-- !batch form
     <div class="row">
         <div class="column left" style="background-color: transparent;">
             <div class="batchBtestLabel">@BATCH</div>
@@ -55,7 +55,7 @@
             </table>
         </div>
 
-        <!-- !btest form -->
+        !btest form
         <div class="column right" style="background-color: transparent;">
             <div class="batchBtestLabel">@BTEST</div>
             <table>
@@ -97,7 +97,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="controller">End Datetime:</label> <!-- !fix based on what is chosen -->
+                        <label for="controller">End Datetime:</label> !fix based on what is chosen
                     </td>
                     <td style="color: #dcdcdc;">
                         190503103149
@@ -105,18 +105,124 @@
                 </tr>
             </table>
         </div>
-    </div>
+    </div> -->
+    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid &&
+        onSubmit(f.value)" novalidate>
+        <div class="row">
+            <div class="column left" style="background-color: transparent;">
+                <div class="batchBtestLabel">@BATCH</div>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="uutType">UUT Type:</label>
+                        </td>
+                        <td>
+                            <input class="shortInput" type="text"
+                                [(ngModel)]="model.uutType" #uutType="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted &&
+                                uutType.invalid }" required>
+                        </td>
+                    </tr>
+                    <!-- input validation -->
+                    <tr *ngIf="f.submitted && uutType.invalid"
+                        class="invalid-feedback">
 
-    <p>
-        Note: Edit respective fields only if you want redefine the values.<br>
-        Click "Next" to proceed to the next page where you can simulate an alert
-        or click "Finish".
-    </p>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="uutTypeRev">UUT Type Rev:</label>
+                        </td>
+                        <td>
+                            <input class="shortInput" type="text"
+                                [(ngModel)]="uutTypeRev">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fixtureID">Fixture ID: </label>
+                        </td>
+                        <td>
+                            <input class="shortInput" type="text"
+                                [(ngModel)]="fixtureID">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="controller">Controller: </label>
+                        </td>
+                        <td>
+                            <input class="shortInput" type="text"
+                                [(ngModel)]="controller">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="column right" style="background-color: transparent;">
+                <div class="batchBtestLabel">@BATCH</div>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="boardID">Board ID:</label>
+                        </td>
+                        <td>
+                            <input class="longInput" type="text"
+                                [(ngModel)]="boardID">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="startDatetime">Start Datetime:</label>
+                        </td>
+                        <td class="inline" style="display: flex; padding-top:
+                            22px;">
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <div class="checkmark"></div>
+                            </label>
+                            Use current time
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="duration">Duration:</label>
+                        </td>
+                        <td class="inline" style="display: flex; padding-top:
+                            22px;">
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <div class="checkmark"></div>
+                            </label>
+                            <input class="longInput" id="duration" type="text"
+                                placeholder="Custom duration in seconds">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="endDateTime">End Datetime:</label> <!-- !fix based on what is chosen -->
+                        </td>
+                        <td style="color: #dcdcdc;">
+                            190503103149
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-    <div class="inline" style="float: right;">
-        <button class="btn" type="submit" (click)="sendData()"
-            [routerLink]="'/alert-simulation'">Next</button>
-        <!-- <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
-        <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button> -->
-    </div>
+        <p>
+            Note: Edit respective fields only if you want redefine the values.<br>
+            Click "Next" to proceed to the next page where you can simulate an
+            alert
+            or click "Finish".
+        </p>
+
+        <!-- !form submit button -->
+        <!-- <div class="inline" style="float: right;">
+            <button class="btn" type="submit" (click)="sendData()"
+                [routerLink]="'/alert-simulation'">Next</button>
+            <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
+            <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button>
+        </div> -->
+    </form>
+
+
 </div>
