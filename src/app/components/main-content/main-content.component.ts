@@ -16,8 +16,6 @@ export class MainContentComponent implements OnInit {
   public duration: string;
   public endTime: string;
 
-  model: any = {};
-
   constructor(
     private electronService: ElectronService,
     private ref:ChangeDetectorRef

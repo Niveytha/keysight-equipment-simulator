@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <!-- !batch form
+    <!-- !batch form -->
     <div class="row">
         <div class="column left" style="background-color: transparent;">
             <div class="batchBtestLabel">@BATCH</div>
@@ -55,7 +55,7 @@
             </table>
         </div>
 
-        !btest form
+        <!-- !btest form -->
         <div class="column right" style="background-color: transparent;">
             <div class="batchBtestLabel">@BTEST</div>
             <table>
@@ -97,7 +97,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="controller">End Datetime:</label> !fix based on what is chosen
+                        <label for="controller">End Datetime:</label> <!-- !fix based on what is chosen -->
                     </td>
                     <td style="color: #dcdcdc;">
                         190503103149
@@ -105,8 +105,10 @@
                 </tr>
             </table>
         </div>
-    </div> -->
-    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid &&
+        <button class="btn inline" type="submit" (click)="sendData()"
+            [routerLink]="'/alert-simulation'" style="float: right;">Next</button>
+    </div>
+    <!-- <form name="form" #f="ngForm" (ngSubmit)="f.form.valid &&
         onSubmit(f.value)" novalidate>
         <div class="row">
             <div class="column left" style="background-color: transparent;">
@@ -118,12 +120,12 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="model.uutType" #uutType="ngModel"
+                                [(ngModel)]="uutType" #uutType="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted &&
                                 uutType.invalid }" required>
                         </td>
                     </tr>
-                    <!-- !uutType input validation -->
+                    !uutType input validation
                     <tr *ngIf="f.submitted && uutType.invalid"
                         class="invalid-feedback">
                         <div *ngIf="uutType.errors.required">Value is required</div>
@@ -134,13 +136,13 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="model.uutTypeRev"
+                                [(ngModel)]="uutTypeRev"
                                 #uutTypeRev="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted &&
                                 uutTypeRev.invalid }" required>
                         </td>
                     </tr>
-                    <!-- !uutTypeRev input validation -->
+                    !uutTypeRev input validation
                     <tr *ngIf="f.submitted && uutTypeRev.invalid"
                         class="invalid-feedback">
                         <div *ngIf="uutTypeRev.errors.required">Value is
@@ -152,13 +154,13 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="model.fixtureID"
+                                [(ngModel)]="fixtureID"
                                 #fixtureID="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted &&
                                 fixtureID.invalid }" required>
                         </td>
                     </tr>
-                    <!-- !fixtureID input validation -->
+                    !fixtureID input validation
                     <tr *ngIf="f.submitted && fixtureID.invalid"
                         class="invalid-feedback">
                         <div *ngIf="fixtureID.errors.required">Value is required</div>
@@ -169,13 +171,13 @@
                         </td>
                         <td>
                             <input class="shortInput" type="text"
-                                [(ngModel)]="model.controller"
+                                [(ngModel)]="controller"
                                 #controller="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted &&
                                 controller.invalid }" required>
                         </td>
                     </tr>
-                    <!-- !controller input validation -->
+                    !controller input validation
                     <tr *ngIf="f.submitted && controller.invalid"
                         class="invalid-feedback">
                         <div *ngIf="controller.errors.required">Value is
@@ -192,13 +194,13 @@
                         </td>
                         <td>
                             <input class="longInput" type="text"
-                                [(ngModel)]="model.boardID"
+                                [(ngModel)]="boardID"
                                 #boardID="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted &&
                                 boardID.invalid }" required>
                         </td>
                     </tr>
-                    <!-- !boardID input validation -->
+                    !boardID input validation
                     <tr *ngIf="f.submitted && boardID.invalid"
                         class="invalid-feedback">
                         <div *ngIf="boardID.errors.required">Value is
@@ -233,7 +235,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="endDateTime">End Datetime:</label> <!-- !fix based on what is chosen -->
+                            <label for="endDateTime">End Datetime:</label> !fix based on what is chosen
                         </td>
                         <td style="color: #dcdcdc;">
                             190503103149
@@ -250,11 +252,10 @@
             or click "Finish".
         </p>
 
-        <!-- !form submit button -->
-        <!-- <input class="btn inline" type="submit" value="next" style="float:
-            right;" [routerLink]="'/alert-simulation'"> -->
+        !form submit button
+        <input class="btn inline" type="submit" value="next" style="float:
+            right;" [routerLink]="'/alert-simulation'">
         <button class="btn inline" type="submit" (click)="sendData()"
             [routerLink]="'/alert-simulation'" style="float: right;">Next</button>
-    </form>
-
+    </form> -->
 </div>
