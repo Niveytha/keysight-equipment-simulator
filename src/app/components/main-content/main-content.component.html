@@ -251,15 +251,10 @@
         </p>
 
         <!-- !form submit button -->
-        <!-- <div class="inline" style="float: right;">
-            <button class="btn" type="submit" (click)="sendData()"
-                [routerLink]="'/alert-simulation'">Next</button>
-            <app-button [buttonName]="'Next'" [routerLink]="'/alert-simulation'"></app-button>
-            <app-button [buttonName]="'Finish'" [routerLink]="'/end'"></app-button>
-        </div> -->
-        <input class="btn inline" type="submit" value="next" style="float:
-            right;">
+        <!-- <input class="btn inline" type="submit" value="next" style="float:
+            right;" [routerLink]="'/alert-simulation'"> -->
+        <button class="btn inline" type="submit" (click)="sendData()"
+            [routerLink]="'/alert-simulation'" style="float: right;">Next</button>
     </form>
-
 
 </div>
