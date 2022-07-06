@@ -1,18 +1,22 @@
 <div style="padding-top: 1%; padding-bottom: 1%;">
-    <div class="inline" style="display: flex; justify-content: space-between;">
-        <h3>File name:</h3>
-        <input type="text" id="fileName" readonly="readonly">
-        <div class="file_input_div">
-            <input type="button" id="button" value="Browse" style="padding: 2%;"
-                />
-            <input type="file" style="opacity:0; position:relative; left:-40px;"
-                onchange="javascript: document.getElementById('fileName').value=
-                this.value" />
-        </div>
+    <h3 style="font-size: large; padding-bottom: 1%;">Select a folder:</h3>
+    <div class="inputfile-box">
+        <input #folderInput
+            type="file"
+            id="file"
+            class="nostyle inputfile"
+            (change)="filesPicked(folderInput.files)"
+            webkitdirectory directory multiple>
+        <label for="file">
+            <span #fileName id="file-name" class="file-box"></span>
+            <span class="file-button">
+                Browse
+            </span>
+        </label>
     </div>
 
-    <!-- !batch form -->
-    <div class="row">
+    <div class="row" style="padding-top: 1%;">
+        <!-- !batch form -->
         <div class="column left" style="background-color: transparent;">
             <div class="batchBtestLabel">@BATCH</div>
             <table>
@@ -60,20 +64,20 @@
             <div class="batchBtestLabel">@BTEST</div>
             <table>
                 <tr>
-                    <td>
+                    <td class="longCell">
                         <label for="boardID">Board ID:</label>
                     </td>
                     <td>
                         <input class="longInput" type="text"
-                            [(ngModel)]="boardID">
+                            [(ngModel)]="boardID" style="width: 100%">
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="longCell">
                         <label for="startDatetime">Start Datetime:</label>
                     </td>
                     <td class="inline" style="display: flex; padding-top:
-                        22px;">
+                        22px; color: #dcdcdc;">
                         <label class="checkbox-container">
                             <input type="checkbox">
                             <div class="checkmark"></div>
@@ -87,7 +91,8 @@
                     </td>
                     <td class="inline" style="display: flex; padding-top:
                         22px;">
-                        <label class="checkbox-container">
+                        <label class="checkbox-container" style="padding-top:
+                            10px;">
                             <input type="checkbox">
                             <div class="checkmark"></div>
                         </label>

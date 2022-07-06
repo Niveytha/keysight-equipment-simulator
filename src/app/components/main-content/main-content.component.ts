@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ElectronService } from '../../core/services';
 
 @Component({
@@ -6,7 +6,7 @@ import { ElectronService } from '../../core/services';
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.scss']
 })
-export class MainContentComponent implements OnInit {  
+export class MainContentComponent implements OnInit { 
   public uutType: string;
   public uutTypeRev: string;
   public fixtureID: string;
@@ -18,7 +18,7 @@ export class MainContentComponent implements OnInit {
 
   constructor(
     private electronService: ElectronService,
-    private ref:ChangeDetectorRef
+    private ref:ChangeDetectorRef,
   ) { 
     if (electronService.isElectron) {
       console.log(process.env);
@@ -84,4 +84,33 @@ export class MainContentComponent implements OnInit {
     console.log("Form submitted!");
     alert('FORM SUBMITTED!');
   }
+
+  @ViewChild("fileName") fileName: ElementRef;
+
+  filesPicked(files) {
+    const folderName = files[0].webkitRelativePath.split('/')[0];
+    this.fileName.nativeElement.innerHTML = folderName;
+    // alert(folderName);
+
+    // for (let i = 0; i < files.length; i++) {
+    //     const file = files[i];
+        // alert(file);
+        // const path = file.webkitRelativePath.split('/');
+        // alert(path);
+    // }
+  }
+
+
+  // TODO: delete later
+  // @ViewChild("myNameElem") myNameElem: ElementRef;
+  
+  // getValue() {
+  //   // console.log(this.myNameElem);
+  //   // this.myNameElem.nativeElement.innerHTML = "After change";
+  //   console.log(this.myNameElem.nativeElement.value);
+  // }
+
+  // resetValue() {
+  //   this.myNameElem.nativeElement.value = '';
+  // }
 }
