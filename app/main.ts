@@ -153,7 +153,7 @@ ipcMain.on('getData', (event, args) => {
   PythonShell.run('inputData.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
-    console.log('RESULT: ', result.toString());
+    console.log('BEFORE: ', result.toString());
 
     // Return Data To Angular
     event.reply('getDataResponse', result);
@@ -174,7 +174,9 @@ ipcMain.on('sendData', (event, args) => {
   PythonShell.run('outputData.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
-    // console.log('RESULT: ', result.toString());
+    // console.log('AFTER2: ', result); // !result is NULL
+
+    console.log("Values sent successfully!")
 
     // Return Data To Angular
     event.reply('sendDataResponse', result);

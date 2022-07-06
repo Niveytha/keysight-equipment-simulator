@@ -118,8 +118,13 @@
                 </tr>
             </table>
         </div>
-        <button class="btn inline" type="submit" (click)="sendData()"
-            [routerLink]="'/alert-simulation'" style="float: right;">Next</button>
+        <div class="inline" style="float: right;">
+            <button class="btn" type="submit"
+                [routerLink]="'/alert-simulation'">Next</button>
+            <!-- TODO: define what this is for below! -->
+            <button class="btn" type="submit" (click)="sendData()"
+                [routerLink]="'/end'" style="margin-left: 20px;">Finish</button>
+        </div>
     </div>
     <!-- <form name="form" #f="ngForm" (ngSubmit)="f.form.valid &&
         onSubmit(f.value)" novalidate>
