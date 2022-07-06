@@ -25,6 +25,10 @@ hr.solid {
     margin-bottom: 22px;
 }
 
+.noStyle {
+    all: unset;
+}
+
 .centered {
     display: flex;
     /* width: 100vw; */
@@ -144,6 +148,7 @@ input:not(.nostyle) input:hover, input:focus {
     cursor: pointer;
     font-size: 20px;
     user-select: none;
+    padding-right: 7%;
 }
    
 /* Create a custom checkbox */

@@ -37,12 +37,12 @@ p {
 }
   
 .left {
-    width: 39%;
+    width: 38%;
 }
   
 .right {
-    width: 61%;
-    padding-left: 6%;
+    width: 62%;
+    padding-left: 5%;
     border-left: 3.5px solid #393939;
 }
   
@@ -128,9 +128,9 @@ p {
     height: calc(2.21rem);
 }
 
-.file-button {
+#browse-btn {
     background: #6c6c6c;
-    border-radius: 5px;
+    border-radius: 0px 8px 8px 0px;
     padding: 5px 12px 5px 12px;
     position: absolute;
     top: 0px;

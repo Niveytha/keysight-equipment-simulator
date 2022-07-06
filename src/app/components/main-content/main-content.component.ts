@@ -16,6 +16,9 @@ export class MainContentComponent implements OnInit {
   public duration: string;
   public endTime: string;
 
+  public startDateTimeStatus: boolean = false;
+  public durationStatus: boolean = false;
+
   constructor(
     private electronService: ElectronService,
     private ref:ChangeDetectorRef,
@@ -80,37 +83,53 @@ export class MainContentComponent implements OnInit {
     this.electronService.sendData(data, 'sendData');
   }
 
-  onSubmit(result) {
-    console.log("Form submitted!");
-    alert('FORM SUBMITTED!');
-  }
+  // onSubmit(result) {
+  //   console.log("Form submitted!");
+  //   alert('FORM SUBMITTED!');
+  // }
 
   @ViewChild("fileName") fileName: ElementRef;
-
   filesPicked(files) {
     const folderName = files[0].webkitRelativePath.split('/')[0];
     this.fileName.nativeElement.innerHTML = folderName;
-    // alert(folderName);
+  }
 
-    // for (let i = 0; i < files.length; i++) {
-    //     const file = files[i];
-        // alert(file);
-        // const path = file.webkitRelativePath.split('/');
-        // alert(path);
+  // !startDateTime Checkbox
+  @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
+  startDateTimeFunc() {
+    this.startDateTimeStatus = !this.startDateTimeStatus;
+    // if (this.startDateTimeCB.nativeElement.checked == true) {
+    //   alert("checked");
+    // } else {
+    //   alert("unchecked");
+    // }
+  }
+
+  // !duration Checkbox
+  @ViewChild("durationCB") durationCB: ElementRef;
+  durationFunc() {
+    this.durationStatus = !this.durationStatus;
+    // if (this.durationCB.nativeElement.checked == true) {
+    //   alert("checked");
+    // } else {
+    //   alert("unchecked");
     // }
   }
 
 
-  // TODO: delete later
-  // @ViewChild("myNameElem") myNameElem: ElementRef;
   
-  // getValue() {
-  //   // console.log(this.myNameElem);
-  //   // this.myNameElem.nativeElement.innerHTML = "After change";
-  //   console.log(this.myNameElem.nativeElement.value);
+  // TODO: Examples (to be deleted)
+  // @ViewChild("myNameElem1") myNameElem1: ElementRef;
+  // getValue1() {
+  //   console.log(this.myNameElem1);
+  //   this.myNameElem1.nativeElement.innerHTML = "After change";
   // }
 
+  // @ViewChild('myNameElem2') myNameElem2: ElementRef;
+  // getValue2() {
+  //   console.log(this.myNameElem2.nativeElement.value);
+  // }
   // resetValue() {
-  //   this.myNameElem.nativeElement.value = '';
+  //   this.myNameElem2.nativeElement.value = '';
   // }
 }

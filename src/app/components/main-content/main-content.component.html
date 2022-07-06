@@ -9,12 +9,11 @@
             webkitdirectory directory multiple>
         <label for="file">
             <span #fileName id="file-name" class="file-box"></span>
-            <span class="file-button">
+            <span id="browse-btn">
                 Browse
             </span>
         </label>
     </div>
-
     <div class="row" style="padding-top: 1%;">
         <!-- !batch form -->
         <div class="column left" style="background-color: transparent;">
@@ -79,10 +78,14 @@
                     <td class="inline" style="display: flex; padding-top:
                         22px; color: #dcdcdc;">
                         <label class="checkbox-container">
-                            <input type="checkbox">
+                            <input type="checkbox"
+                                id="startDateTimeCB"
+                                #startDateTimeCB
+                                (click)="startDateTimeFunc()">
                             <div class="checkmark"></div>
                         </label>
-                        Use current time
+                        <label for="startDateTimeCB" class="noStyle">Use current
+                            datetime</label>
                     </td>
                 </tr>
                 <tr>
@@ -93,11 +96,16 @@
                         22px;">
                         <label class="checkbox-container" style="padding-top:
                             10px;">
-                            <input type="checkbox">
+                            <input type="checkbox"
+                                id="durationCB"
+                                #durationCB
+                                (click)="durationFunc()">
                             <div class="checkmark"></div>
                         </label>
-                        <input class="longInput" id="duration" type="text"
-                            placeholder="Custom duration in seconds">
+                        <input class="longInput" id="duration" type="number"
+                            placeholder="Custom duration">
+                        <span style="margin-left:10px; padding-top:
+                            10px; padding-left: 8px; color: #dcdcdc;">seconds</span>
                     </td>
                 </tr>
                 <tr>
