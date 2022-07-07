@@ -35,9 +35,9 @@ fixtureID = batchLine[3]
 controller = batchLine[9]
 
 boardID = btestLine[1]
-startTime = btestLine[3]
+startDateTime = btestLine[3]
 duration = btestLine[4]
-endTime = btestLine[10]
+endDateTime = btestLine[10]
 
 # !send as JSON
 results = {"uutType": uutType,
@@ -45,9 +45,9 @@ results = {"uutType": uutType,
            "fixtureID": fixtureID,
            "controller": controller,
            "boardID": boardID,
-           "startTime": startTime,
+           "startDateTime": startDateTime,
            "duration": duration,
-           "endTime": endTime}
+           "endDateTime": endDateTime}
 
 resultsJSON = json.dumps(results)
 print(resultsJSON)

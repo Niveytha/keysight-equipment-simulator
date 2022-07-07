@@ -12,12 +12,17 @@ export class MainContentComponent implements OnInit {
   public fixtureID: string;
   public controller: string;
   public boardID: string;
-  public startTime: string;
+  public startDateTime: string;
   public duration: string;
-  public endTime: string;
+  public endDateTime: string;
 
-  public startDateTimeStatus: boolean = false;
-  public durationStatus: boolean = false;
+  public startDateTimeChanged: boolean = false;
+  public durationChanged: boolean = false;
+
+  @ViewChild("fileName") fileName: ElementRef;
+  @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
+  @ViewChild("durationCB") durationCB: ElementRef;
+  @ViewChild("newDuration") newDuration: ElementRef;
 
   constructor(
     private electronService: ElectronService,
@@ -50,9 +55,9 @@ export class MainContentComponent implements OnInit {
           this.controller = parseData.controller;
 
           this.boardID = parseData.boardID;
-          this.startTime = parseData.startTime;
+          this.startDateTime = parseData.startDateTime;
           this.duration = parseData.duration;
-          this.endTime = parseData.endTime;
+          this.endDateTime = parseData.endDateTime;
 
           this.ref.detectChanges();
         }
@@ -70,15 +75,20 @@ export class MainContentComponent implements OnInit {
   }
 
   sendData() {
+    if (this.durationChanged && this.newDuration.nativeElement.value) {
+      this.duration = this.newDuration.nativeElement.value;
+    } 
     const data = [
-      this.uutType,
-      this.uutTypeRev,
-      this.fixtureID,
-      this.controller,
-      this.boardID,
-      this.startTime,
-      this.duration,
-      this.endTime
+      this.uutType,        // 1
+      this.uutTypeRev,     // 2
+      this.fixtureID,      // 3
+      this.controller,     // 4
+      this.boardID,        // 5
+      this.startDateTime,      // 6
+      this.startDateTimeChanged, // 7
+      this.duration,       // 8
+      this.durationChanged, // 9
+      this.endDateTime         // 10
     ];
     this.electronService.sendData(data, 'sendData');
   }
@@ -88,33 +98,24 @@ export class MainContentComponent implements OnInit {
   //   alert('FORM SUBMITTED!');
   // }
 
-  @ViewChild("fileName") fileName: ElementRef;
   filesPicked(files) {
     const folderName = files[0].webkitRelativePath.split('/')[0];
     this.fileName.nativeElement.innerHTML = folderName;
   }
 
   // !startDateTime Checkbox
-  @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
   startDateTimeFunc() {
-    this.startDateTimeStatus = !this.startDateTimeStatus;
-    // if (this.startDateTimeCB.nativeElement.checked == true) {
-    //   alert("checked");
-    // } else {
-    //   alert("unchecked");
-    // }
+    this.startDateTimeChanged = !this.startDateTimeChanged;
   }
 
-  // !duration Checkbox
-  @ViewChild("durationCB") durationCB: ElementRef;
+  // !duration Checkbox & newDuration value
   durationFunc() {
-    this.durationStatus = !this.durationStatus;
-    // if (this.durationCB.nativeElement.checked == true) {
-    //   alert("checked");
-    // } else {
-    //   alert("unchecked");
-    // }
+    this.durationChanged = !this.durationChanged;
+    if (this.durationChanged)
+      this.newDuration.nativeElement.removeAttribute('disabled');
+    else this.newDuration.nativeElement.setAttribute('disabled', true);
   }
+
 
 
   
