@@ -106,5 +106,10 @@
   },
   "browserslist": [
     "chrome 100"
-  ]
+  ],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  }
 }

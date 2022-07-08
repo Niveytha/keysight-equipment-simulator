@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ElectronService } from '../../core/services';
+import { app, dialog } from 'electron';
+
 
 @Component({
   selector: 'app-main-content',
@@ -116,7 +118,16 @@ export class MainContentComponent implements OnInit {
     else this.newDuration.nativeElement.setAttribute('disabled', true);
   }
 
-
+  // chooseFile() {
+  //   dialog.showOpenDialog({
+  //     defaultPath: app.getPath("documents"),
+  //     properties: ['openDirectory'],
+  //     buttonLabel: 'Select a folder'
+  //   })
+  //   .then((result) => {
+  //     console.log("result", result)
+  //   });
+  // }
 
   
   // TODO: Examples (to be deleted)

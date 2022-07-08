@@ -1,3 +1,5 @@
+# TODO: FILE TO BE DELETED
+
 # f = open("src/assets/scripts/i3070_Logs/test.txt", 'r')
 # for line in f:
 #     print(line)
@@ -15,7 +17,7 @@
 # def menu(uutType, uutTypeRev, fixtureID, controller, boardID, startTime, duration, endTime):
 #     valid = ["1", "2", "3", "4", "5", "6", "7", "0"]
 #     print("\nBelow are the current values from the file:")
-    
+
 #     print("\n@BATCH")
 #     print("1. UUT Type: " + uutType)
 #     print("2. UUT Type Rev: " + uutTypeRev)
@@ -35,7 +37,7 @@
 #         if option in valid:
 #             if option == "0":
 #                 return uutType, uutTypeRev, fixtureID, controller, boardID, startTime, duration, endTime
-            
+
 #             if option == "1":
 #                 uutType = input("Enter a new UUT Type = ")
 #             elif option == "2":
@@ -75,19 +77,19 @@
 
 #     for line in f:
 #         line = line.split('|')
-        
+
 #         if line[0].lstrip('{') == '@BATCH':
 #             uutType = line[1]
 #             uutTypeRev = line[2]
 #             fixtureID = line[3]
 #             controller = line[9]
-        
+
 #         if line[0].lstrip('{') == '@BTEST':
 #             boardID = line[1]
 #             startTime = line[3]
 #             duration = line[4]
 #             endTime = line[10]
-    
+
 #     print(uutType)
 #     print("Old startTime: " + startTime)
 #     uutType, uutTypeRev, fixtureID, controller, boardID, startTime, duration, endTime = menu(uutType, uutTypeRev, fixtureID, controller, boardID, startTime, duration, endTime)

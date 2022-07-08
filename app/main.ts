@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, dialog, globalShortcut } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -86,7 +86,6 @@ function createWindow(): BrowserWindow {
   });
 
   if (serve) {
-
     require('electron-reloader')(module);
     win.loadURL('http://localhost:4200');
   } else {
@@ -112,6 +111,19 @@ function createWindow(): BrowserWindow {
     // Dereference the window object, usually you would store window in an array if your app supports multi windows, this is the time when you should delete the corresponding element.
     win = null;
   });
+
+  globalShortcut.register('Command+O', () => {
+    dialog.showOpenDialog({
+      defaultPath: app.getPath("documents"),
+      properties: ['openDirectory'],
+      buttonLabel: 'Select folder'
+    }).then((result) => {
+      console.log("result", result)
+    });
+  })
+  
+  // win.webContents.on("did-finish-load", () => { 
+  // })
 
   return win;
 }
