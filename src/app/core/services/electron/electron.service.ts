@@ -15,7 +15,7 @@ export class ElectronService {
   webFrame: typeof webFrame;
   childProcess: typeof childProcess;
   fs: typeof fs;
-  dialog: typeof dialog;
+  // dialog: typeof dialog;
 
   constructor() {
     // Conditional imports
