@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import * as url from 'url';
 
 const { PythonShell } = require('python-shell');
+// const { dialog } = require('electron')
+// console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -67,6 +69,9 @@ function createMenu() {
 }
 
 function createWindow(): BrowserWindow {
+  // const electronScreen = screen;
+  // const size = electronScreen.getPrimaryDisplay().workAreaSize;
+
   // Create the browser window.
   win = new BrowserWindow({
     x: 0,
@@ -112,10 +117,13 @@ function createWindow(): BrowserWindow {
       defaultPath: app.getPath("documents"),
       properties: ['openDirectory'],
       buttonLabel: 'Select folder'
-    }).then((inputPath) => {
-      // console.log("result", inputPath)
+    }).then((result) => {
+      console.log("result", result)
     });
   })
+  
+  // win.webContents.on("did-finish-load", () => { 
+  // })
 
   return win;
 }
@@ -144,19 +152,19 @@ function createWindow(): BrowserWindow {
 //   console.log('finished');
 // });
 
-// !get input data
+// !get data
 ipcMain.on('getData', (event, args) => {
   let pathIndex = '../src/assets/scripts';
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: path.join(__dirname, pathIndex),
-    args: args, // an argument which can be accessed in the script using sys.argv[1]
+    args: args, //An argument which can be accessed in the script using sys.argv[1]
   };
 
   PythonShell.run('inputData.py', options, (err, result) => {
     if (err) throw err;
-    // result is an array consisting of messages collected during execution of script
+    // result is an array consisting of messages collected during execution of script.
     console.log('BEFORE: ', result.toString());
 
     // Return Data To Angular
@@ -164,19 +172,20 @@ ipcMain.on('getData', (event, args) => {
   });
 });
 
-// !send output data
+// !send data
 ipcMain.on('sendData', (event, args) => {
+
   let pathIndex = '../src/assets/scripts';
   let options = {
     mode: 'text',
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: path.join(__dirname, pathIndex),
-    args: args, // an argument which can be accessed in the script using sys.argv[1]
+    args: args, //An argument which can be accessed in the script using sys.argv[1]
   };
 
   PythonShell.run('outputData.py', options, (err, result) => {
     if (err) throw err;
-    // result is an array consisting of messages collected during execution of script
+    // result is an array consisting of messages collected during execution of script.
     // console.log('AFTER2: ', result); // !result is NULL
 
     console.log("Values sent successfully!")
