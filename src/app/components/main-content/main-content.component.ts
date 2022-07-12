@@ -26,6 +26,7 @@ export class MainContentComponent implements OnInit {
   @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
   @ViewChild("durationCB") durationCB: ElementRef;
   @ViewChild("newDuration") newDuration: ElementRef;
+  @ViewChild("endDateTimeValue") endDateTimeValue: ElementRef;
 
   constructor(
     private electronService: ElectronService,
@@ -76,13 +77,8 @@ export class MainContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.inputPath = history.state.input;
-    // this.sendInputPath()
+    this.electronService.sendData([this.inputPath], 'sendInputPath');
   }
-
-  // sendInputPath(){
-  //   const data = [this.inputPath];
-  //   this.electronService.sendData(data, 'sendInputPath');
-  // }
 
   sendData() {
     if (this.durationChanged && this.newDuration.nativeElement.value) {
@@ -99,7 +95,7 @@ export class MainContentComponent implements OnInit {
       this.duration,        // 8
       this.durationChanged, // 9
       this.endDateTime,     // 10
-      this.outputPath,       // 11
+      this.outputPath       // 11
     ];
     this.electronService.sendData(data, 'sendData');
   }
