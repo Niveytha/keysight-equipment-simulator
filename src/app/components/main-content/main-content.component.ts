@@ -95,7 +95,8 @@ export class MainContentComponent implements OnInit {
       this.duration,        // 8
       this.durationChanged, // 9
       this.endDateTime,     // 10
-      this.outputPath       // 11
+      this.inputPath,       // 11
+      this.outputPath       // 12
     ];
     this.electronService.sendData(data, 'sendData');
   }
@@ -106,7 +107,8 @@ export class MainContentComponent implements OnInit {
   // }
 
   outputFolderPicked(files) {
-    this.outputPath = files[0].path;
+    this.outputPath = files[0].path.split("/").slice(0, -1).join("/");
+    // this.outputPath = files[0].path;
     this.outputFolderName.nativeElement.innerHTML = this.outputPath;
   }
 

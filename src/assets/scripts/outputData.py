@@ -20,7 +20,8 @@ changedVars = {"uutType": sys.argv[1],
                "duration": sys.argv[8],
                "durationChanged": sys.argv[9],
                "endDateTime": sys.argv[10],
-               "outputPath": sys.argv[11]
+               "inputPath": sys.argv[11],
+               "outputPath": sys.argv[12]
                }
 
 # !testing - to be deleted
@@ -39,24 +40,26 @@ changedVars = {"uutType": sys.argv[1],
 durationVariations = [-2, -1, 0, 1, 2]
 
 inputFolderPath = "src/assets/scripts/i3070_Logs (Approach 1)"
+# !inputFolderPath = changedVars["inputPath"]
 files = [f for f in listdir(inputFolderPath)
          if isfile(join(inputFolderPath, f))]  # ignore subdirectory
 
-outputFolder = "Output Files"
-try:
-    mkdir(join(inputFolderPath, outputFolder))
-    print("Directory '", outputFolder,  "' created")
-except FileExistsError:
-    print("Directory '", outputFolder,  "' already exists")
+outputFolder = changedVars["outputPath"]
+# outputFolder = "Output Files"
+# try:
+#     mkdir(join(inputFolderPath, outputFolder))
+#     print("Directory '", outputFolder,  "' created")
+# except FileExistsError:
+#     print("Directory '", outputFolder,  "' already exists")
 
 # !delete old output files
-for oldFile in listdir(join(inputFolderPath, outputFolder)):
-    remove(join(inputFolderPath, outputFolder, oldFile))
+for oldFile in listdir(outputFolder):
+    remove(join(outputFolder, oldFile))
 
 outputFilesCount = 0
 for filename in files:
     f = open(join(inputFolderPath, filename), 'r')
-    g = open(join(inputFolderPath, outputFolder, filename), 'w')
+    g = open(join(outputFolder, filename), 'w')
 
     lines = f.readlines()
 
