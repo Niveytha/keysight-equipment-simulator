@@ -60,68 +60,71 @@ for oldFile in listdir(outputFolder):
 
 outputFilesCount = 0
 for filename in files:
-    f = open(join(inputFolderPath, filename), 'r')
-    g = open(join(outputFolder, filename), 'w')
+    try:
+        f = open(join(inputFolderPath, filename), 'r')
+        g = open(join(outputFolder, filename), 'w')
 
-    lines = f.readlines()
+        lines = f.readlines()
 
-    batchLine = lines[0].split('|')
-    btestLine = lines[1].split('|')
+        batchLine = lines[0].split('|')
+        btestLine = lines[1].split('|')
 
-    # !Process & modify variables
-    # 1. BoardID Prefix & Replace
-    if changedVars["replaceValue"] != "undefined":
-        changedVars["boardID"] = changedVars["replaceValue"] + \
-            "_" + changedVars["boardID"].split("_")[-1]
-    if changedVars["prefixValue"] != "undefined":
-        changedVars["boardID"] = changedVars["prefixValue"] + \
-            changedVars["boardID"]
+        # !Process & modify variables
+        # 1. BoardID Prefix & Replace
+        if changedVars["replaceValue"] != "undefined":
+            changedVars["boardID"] = changedVars["replaceValue"] + \
+                "_" + changedVars["boardID"].split("_")[-1]
+        if changedVars["prefixValue"] != "undefined":
+            changedVars["boardID"] = changedVars["prefixValue"] + \
+                changedVars["boardID"]
 
-    # 2. StartDateTime & EndDateTime
-    if changedVars["startDateTimeChanged"] == "true":
-        start = datetime.now()
-        duration = timedelta(seconds=int(changedVars["duration"]))
-        changedVars["endDateTime"] = (
-            start + duration).strftime("%y%m%d%H%M%S")  # !YYMMDDHHMMSS
-        changedVars["startDateTime"] = start.strftime(
-            "%y%m%d%H%M%S")  # !YYMMDDHHMMSS
-        changedVars["duration"] = str(duration.seconds).zfill(6)
+        # 2. StartDateTime & EndDateTime
+        if changedVars["startDateTimeChanged"] == "true":
+            start = datetime.now()
+            duration = timedelta(seconds=int(changedVars["duration"]))
+            changedVars["endDateTime"] = (
+                start + duration).strftime("%y%m%d%H%M%S")  # !YYMMDDHHMMSS
+            changedVars["startDateTime"] = start.strftime(
+                "%y%m%d%H%M%S")  # !YYMMDDHHMMSS
+            changedVars["duration"] = str(duration.seconds).zfill(6)
 
-    # 3. Duration
-    if changedVars["durationChanged"] == "true":
-        durationVariation = choice(durationVariations)
-        changedVars["duration"] = int(
-            changedVars["duration"]) + durationVariation
-        duration = timedelta(seconds=changedVars["duration"])
-        start = datetime.strptime(
-            changedVars["startDateTime"], "%y%m%d%H%M%S")
-        changedVars["endDateTime"] = (
-            start + duration).strftime("%y%m%d%H%M%S")  # !YYMMDDHHMMSS
-        changedVars["startDateTime"] = start.strftime(
-            "%y%m%d%H%M%S")  # !YYMMDDHHMMSS
-        changedVars["duration"] = str(duration.seconds).zfill(6)
+        # 3. Duration
+        if changedVars["durationChanged"] == "true":
+            durationVariation = choice(durationVariations)
+            changedVars["duration"] = int(
+                changedVars["duration"]) + durationVariation
+            duration = timedelta(seconds=changedVars["duration"])
+            start = datetime.strptime(
+                changedVars["startDateTime"], "%y%m%d%H%M%S")
+            changedVars["endDateTime"] = (
+                start + duration).strftime("%y%m%d%H%M%S")  # !YYMMDDHHMMSS
+            changedVars["startDateTime"] = start.strftime(
+                "%y%m%d%H%M%S")  # !YYMMDDHHMMSS
+            changedVars["duration"] = str(duration.seconds).zfill(6)
 
-    # !Replace with new values
-    batchLine[1] = changedVars["uutType"]
-    batchLine[2] = changedVars["uutTypeRev"]
-    batchLine[3] = changedVars["fixtureID"]
-    batchLine[9] = changedVars["controller"]
+        # !Replace with new values
+        batchLine[1] = changedVars["uutType"]
+        batchLine[2] = changedVars["uutTypeRev"]
+        batchLine[3] = changedVars["fixtureID"]
+        batchLine[9] = changedVars["controller"]
 
-    btestLine[1] = changedVars["boardID"]
-    btestLine[3] = changedVars["startDateTime"]
-    btestLine[4] = changedVars["duration"]
-    btestLine[10] = changedVars["endDateTime"]
+        btestLine[1] = changedVars["boardID"]
+        btestLine[3] = changedVars["startDateTime"]
+        btestLine[4] = changedVars["duration"]
+        btestLine[10] = changedVars["endDateTime"]
 
-    # !Does not modify original file
-    lines[0] = '|'.join(batchLine)
-    lines[1] = '|'.join(btestLine)
+        # !Does not modify original file
+        lines[0] = '|'.join(batchLine)
+        lines[1] = '|'.join(btestLine)
 
-    print("Waiting for: " + changedVars["duration"])
-    time.sleep(int(changedVars["duration"]))
-    for line in lines:
-        g.write(line)
+        print("Waiting for: " + changedVars["duration"])
+        time.sleep(int(changedVars["duration"]))
+        for line in lines:
+            g.write(line)
 
-    outputFilesCount += 1
-    print(outputFilesCount)
-    f.close()
-    g.close()
+        outputFilesCount += 1
+        # print(outputFilesCount)
+        f.close()
+        g.close()
+    except:
+        print("An exception occurred (probably .DS_Store)!")
