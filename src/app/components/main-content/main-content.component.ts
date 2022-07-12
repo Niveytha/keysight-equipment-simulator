@@ -19,13 +19,23 @@ export class MainContentComponent implements OnInit {
   public startDateTimeChanged: boolean = false;
   public durationChanged: boolean = false;
 
+  public prefixChanged: boolean = false;
+  public replaceChanged: boolean = false;
+  public prefixValue: string;
+  public replaceValue: string;
+
   public inputPath: string;
   public outputPath: string;
 
   @ViewChild("outputFolderName") outputFolderName: ElementRef;
+  @ViewChild("boardIDValue") boardIDValue: ElementRef;
   @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
   @ViewChild("durationCB") durationCB: ElementRef;
   @ViewChild("newDuration") newDuration: ElementRef;
+  @ViewChild("prefixCB") prefixCB: ElementRef;
+  @ViewChild("prefix") prefix: ElementRef;
+  @ViewChild("replaceCB") replaceCB: ElementRef;
+  @ViewChild("replace") replace: ElementRef;
   @ViewChild("endDateTimeValue") endDateTimeValue: ElementRef;
 
   constructor(
@@ -63,6 +73,9 @@ export class MainContentComponent implements OnInit {
           this.duration = parseData.duration;
           this.endDateTime = parseData.endDateTime;
 
+          this.boardIDValue.nativeElement.innerHTML = this.boardID;
+          this.endDateTimeValue.nativeElement.innerHTML = this.endDateTime;
+
           this.ref.detectChanges();
         }
       });
@@ -76,27 +89,39 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
     this.inputPath = history.state.input;
     this.electronService.sendData([this.inputPath], 'sendInputPath');
   }
 
   sendData() {
+    if (this.prefixChanged && this.prefix.nativeElement.value) {
+      this.prefixValue = this.prefix.nativeElement.value;
+    } 
+    if (this.replaceChanged && this.replace.nativeElement.value) {
+      this.replaceValue = this.replace.nativeElement.value;
+    } 
     if (this.durationChanged && this.newDuration.nativeElement.value) {
       this.duration = this.newDuration.nativeElement.value;
     } 
+    
     const data = [
       this.uutType,        // 1
       this.uutTypeRev,     // 2
       this.fixtureID,      // 3
       this.controller,     // 4
       this.boardID,        // 5
-      this.startDateTime,        // 6
-      this.startDateTimeChanged, // 7
-      this.duration,        // 8
-      this.durationChanged, // 9
-      this.endDateTime,     // 10
-      this.inputPath,       // 11
-      this.outputPath       // 12
+      this.prefixValue,    // 6
+      this.replaceValue,    // 7
+      this.startDateTime,        // 8
+      this.startDateTimeChanged, // 9
+      this.duration,        // 10
+      this.durationChanged, // 11
+      this.endDateTime,     // 12
+      this.inputPath,       // 13
+      this.outputPath       // 14
     ];
     this.electronService.sendData(data, 'sendData');
   }
@@ -108,8 +133,23 @@ export class MainContentComponent implements OnInit {
 
   outputFolderPicked(files) {
     this.outputPath = files[0].path.split("/").slice(0, -1).join("/");
-    // this.outputPath = files[0].path;
     this.outputFolderName.nativeElement.innerHTML = this.outputPath;
+  }
+
+  // !prefix Checkbox
+  prefixFunc() {
+    this.prefixChanged = !this.prefixChanged;
+    if (this.prefixChanged)
+      this.prefix.nativeElement.removeAttribute('disabled');
+    else this.prefix.nativeElement.setAttribute('disabled', true);
+  }
+
+  // !replace Checkbox
+  replaceFunc() {
+    this.replaceChanged = !this.replaceChanged;
+    if (this.replaceChanged)
+      this.replace.nativeElement.removeAttribute('disabled');
+    else this.replace.nativeElement.setAttribute('disabled', true);
   }
 
   // !startDateTime Checkbox

@@ -66,12 +66,47 @@
             <div class="batchBtestLabel">@BTEST</div>
             <table>
                 <tr>
-                    <td class="longCell">
+                    <td>
                         <label for="boardID">Board ID:</label>
                     </td>
+                    <td #boardIDValue style="color: #dcdcdc;"></td>
+                </tr>
+                <tr>
                     <td>
-                        <input class="longInput" type="text"
-                            [(ngModel)]="boardID" style="width: 100%">
+                    </td>
+                    <td>
+                        <tr>
+                            <td class="inline" style="display: flex;">
+                                <label class="checkbox-container"
+                                    style="padding-top:
+                                    10px;">
+                                    <input type="checkbox"
+                                        id="prefixCB"
+                                        #prefixCB
+                                        (click)="prefixFunc()">
+                                    <div class="checkmark"></div>
+                                </label>
+                                <input class="shortInput" id="duration"
+                                    type="text"
+                                    placeholder="Prefix" #prefix
+                                    disabled>
+                            </td>
+                            <td class="inline" style="display: flex;">
+                                <label class="checkbox-container"
+                                    style="padding-top:
+                                    10px;">
+                                    <input type="checkbox"
+                                        id="replaceCB"
+                                        #replaceCB
+                                        (click)="replaceFunc()">
+                                    <div class="checkmark"></div>
+                                </label>
+                                <input class="shortInput" id="replace"
+                                    type="text"
+                                    placeholder="Replace" #replace
+                                    disabled>
+                            </td>
+                        </tr>
                     </td>
                 </tr>
                 <tr>
@@ -113,11 +148,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="controller">End Datetime:</label> <!-- !fix based on what is chosen -->
+                        <label for="endDateTime">End Datetime:</label>
                     </td>
-                    <td #endDateTimeValue style="color: #dcdcdc;">
-                        190503103149
-                    </td>
+                    <td #endDateTimeValue style="color: #dcdcdc;"></td>
                 </tr>
             </table>
         </div>

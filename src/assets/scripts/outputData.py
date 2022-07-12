@@ -15,13 +15,15 @@ changedVars = {"uutType": sys.argv[1],
                "fixtureID": sys.argv[3],
                "controller": sys.argv[4],
                "boardID": sys.argv[5],
-               "startDateTime": sys.argv[6],
-               "startDateTimeChanged": sys.argv[7],
-               "duration": sys.argv[8],
-               "durationChanged": sys.argv[9],
-               "endDateTime": sys.argv[10],
-               "inputPath": sys.argv[11],
-               "outputPath": sys.argv[12]
+               "prefixValue": sys.argv[6],
+               "replaceValue": sys.argv[7],
+               "startDateTime": sys.argv[8],
+               "startDateTimeChanged": sys.argv[9],
+               "duration": sys.argv[10],
+               "durationChanged": sys.argv[11],
+               "endDateTime": sys.argv[12],
+               "inputPath": sys.argv[13],
+               "outputPath": sys.argv[14]
                }
 
 # !testing - to be deleted
@@ -67,7 +69,15 @@ for filename in files:
     btestLine = lines[1].split('|')
 
     # !Process & modify variables
-    # 1. StartDateTime & EndDateTime
+    # 1. BoardID Prefix & Replace
+    if changedVars["replaceValue"] != "undefined":
+        changedVars["boardID"] = changedVars["replaceValue"] + \
+            "_" + changedVars["boardID"].split("_")[-1]
+    if changedVars["prefixValue"] != "undefined":
+        changedVars["boardID"] = changedVars["prefixValue"] + \
+            changedVars["boardID"]
+
+    # 2. StartDateTime & EndDateTime
     if changedVars["startDateTimeChanged"] == "true":
         start = datetime.now()
         duration = timedelta(seconds=int(changedVars["duration"]))
@@ -77,7 +87,7 @@ for filename in files:
             "%y%m%d%H%M%S")  # !YYMMDDHHMMSS
         changedVars["duration"] = str(duration.seconds).zfill(6)
 
-    # 2. Duration
+    # 3. Duration
     if changedVars["durationChanged"] == "true":
         durationVariation = choice(durationVariations)
         changedVars["duration"] = int(
