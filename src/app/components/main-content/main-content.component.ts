@@ -1,7 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ElectronService } from '../../core/services';
-import { app, dialog } from 'electron';
-
 
 @Component({
   selector: 'app-main-content',
@@ -21,7 +19,10 @@ export class MainContentComponent implements OnInit {
   public startDateTimeChanged: boolean = false;
   public durationChanged: boolean = false;
 
-  @ViewChild("fileName") fileName: ElementRef;
+  public inputPath: string;
+  public outputPath: string;
+
+  @ViewChild("outputFolderName") outputFolderName: ElementRef;
   @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
   @ViewChild("durationCB") durationCB: ElementRef;
   @ViewChild("newDuration") newDuration: ElementRef;
@@ -74,7 +75,14 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.inputPath = history.state.input;
+    // this.sendInputPath()
   }
+
+  // sendInputPath(){
+  //   const data = [this.inputPath];
+  //   this.electronService.sendData(data, 'sendInputPath');
+  // }
 
   sendData() {
     if (this.durationChanged && this.newDuration.nativeElement.value) {
@@ -86,11 +94,12 @@ export class MainContentComponent implements OnInit {
       this.fixtureID,      // 3
       this.controller,     // 4
       this.boardID,        // 5
-      this.startDateTime,      // 6
+      this.startDateTime,        // 6
       this.startDateTimeChanged, // 7
-      this.duration,       // 8
+      this.duration,        // 8
       this.durationChanged, // 9
-      this.endDateTime         // 10
+      this.endDateTime,     // 10
+      this.outputPath,       // 11
     ];
     this.electronService.sendData(data, 'sendData');
   }
@@ -100,9 +109,9 @@ export class MainContentComponent implements OnInit {
   //   alert('FORM SUBMITTED!');
   // }
 
-  filesPicked(files) {
-    const folderName = files[0].webkitRelativePath.split('/')[0];
-    this.fileName.nativeElement.innerHTML = folderName;
+  outputFolderPicked(files) {
+    this.outputPath = files[0].path;
+    this.outputFolderName.nativeElement.innerHTML = this.outputPath;
   }
 
   // !startDateTime Checkbox
@@ -118,6 +127,7 @@ export class MainContentComponent implements OnInit {
     else this.newDuration.nativeElement.setAttribute('disabled', true);
   }
 
+  // TODO: Examples (to be deleted)
   // chooseFile() {
   //   dialog.showOpenDialog({
   //     defaultPath: app.getPath("documents"),
@@ -129,8 +139,6 @@ export class MainContentComponent implements OnInit {
   //   });
   // }
 
-  
-  // TODO: Examples (to be deleted)
   // @ViewChild("myNameElem1") myNameElem1: ElementRef;
   // getValue1() {
   //   console.log(this.myNameElem1);

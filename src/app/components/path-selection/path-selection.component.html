@@ -1,0 +1,26 @@
+<div style="padding-top: 1%; padding-bottom: 1%;">
+    <!-- !input folder -->
+    <h3 style="font-size: large; padding-bottom: 1%;">
+        Select an input folder:
+    </h3>
+    <div class="inputfile-box">
+        <input #folderInput
+            type="file"
+            id="file"
+            class="inputfile"
+            (change)="inputFolderPicked(folderInput.files)"
+            webkitdirectory directory multiple>
+        <label for="file">
+            <span #inputFolderName class="file-box"></span>
+            <span id="browse-btn">
+                Browse
+            </span>
+        </label>
+    </div>
+    <div class="inline" style="float: right;">
+        <button class="btn" type="submit" (click)="sendToMainComponent()"
+            [routerLink]="'/main-content'">Next</button>
+        <!-- <button class="btn" type="submit" (click)="sendData()"
+            [routerLink]="'/end'" style="margin-left: 20px;">Finish</button> -->
+    </div>
+</div>

@@ -20,12 +20,13 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { ButtonComponent } from './shared/components/button/button.component';
 import { AlertSimulationPageComponent } from './components/alert-simulation-page/alert-simulation-page.component';
 import { FinalPageComponent } from './components/final-page/final-page.component';
+import { PathSelectionComponent } from './components/path-selection/path-selection.component';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, MainContentComponent, ButtonComponent, AlertSimulationPageComponent, FinalPageComponent],
+  declarations: [AppComponent, SidebarComponent, MainContentComponent, ButtonComponent, AlertSimulationPageComponent, FinalPageComponent, PathSelectionComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -152,7 +152,7 @@ function createWindow(): BrowserWindow {
 //   console.log('finished');
 // });
 
-// !get data
+// !get input data
 ipcMain.on('getData', (event, args) => {
   let pathIndex = '../src/assets/scripts';
   let options = {
@@ -172,9 +172,30 @@ ipcMain.on('getData', (event, args) => {
   });
 });
 
-// !send data
-ipcMain.on('sendData', (event, args) => {
+// !send input path
+// ipcMain.on('sendInputPath', (event, args) => {
+//   let pathIndex = '../src/assets/scripts';
+//   let options = {
+//     mode: 'text',
+//     pythonOptions: ['-u'], // get print results in real-time
+//     scriptPath: path.join(__dirname, pathIndex),
+//     args: args, //An argument which can be accessed in the script using sys.argv[1]
+//   };
 
+//   PythonShell.run('inputData.py', options, (err, result) => {
+//     if (err) throw err;
+//     // result is an array consisting of messages collected during execution of script.
+//     // console.log('AFTER2: ', result); // !result is NULL
+
+//     console.log("Values sent successfully!")
+
+//     // Return Data To Angular
+//     event.reply('sendDataResponse', result);
+//   });
+// });
+
+// !send output data
+ipcMain.on('sendData', (event, args) => {
   let pathIndex = '../src/assets/scripts';
   let options = {
     mode: 'text',

@@ -19,8 +19,7 @@ changedVars = {"uutType": sys.argv[1],
                "startDateTimeChanged": sys.argv[7],
                "duration": sys.argv[8],
                "durationChanged": sys.argv[9],
-               "endDateTime": sys.argv[10],
-               "outputPath": sys.argv[11]
+               "endDateTime": sys.argv[10]
                }
 
 # !testing - to be deleted

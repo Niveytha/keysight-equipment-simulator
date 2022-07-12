@@ -7,6 +7,7 @@ import { DetailRoutingModule } from './template-pages/detail/detail-routing.modu
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { AlertSimulationPageComponent } from './components/alert-simulation-page/alert-simulation-page.component';
 import { FinalPageComponent } from './components/final-page/final-page.component';
+import { PathSelectionComponent } from './components/path-selection/path-selection.component';
 
 const routes: Routes = [
   // {
@@ -14,7 +15,8 @@ const routes: Routes = [
   //   redirectTo: 'home',
   //   pathMatch: 'full'
   // },
-  { path: '', component: MainContentComponent },
+  { path: '', component: PathSelectionComponent },
+  { path: 'main-content', component: MainContentComponent },
   { path: 'alert-simulation', component: AlertSimulationPageComponent },
   { path: 'end', component: FinalPageComponent },
   {

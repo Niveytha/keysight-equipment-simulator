@@ -1,18 +1,17 @@
 <div style="padding-top: 1%; padding-bottom: 1%;">
+    <!-- !output folder -->
     <h3 style="font-size: large; padding-bottom: 1%;">
-        Select a folder:
-        <!-- <span style="color: #9F9FA1; font-size: medium; padding-left: 1%;">('Ctrl
-            + O')</span> -->
+        Select an output folder:
     </h3>
     <div class="inputfile-box">
-        <input #folderInput
+        <input #folderOutput
             type="file"
-            id="file"
-            class="nostyle inputfile"
-            (change)="filesPicked(folderInput.files)"
+            id="file2"
+            class="inputfile"
+            (change)="outputFolderPicked(folderOutput.files)"
             webkitdirectory directory multiple>
-        <label for="file">
-            <span #fileName id="file-name" class="file-box"></span>
+        <label for="file2">
+            <span #outputFolderName class="file-box"></span>
             <span id="browse-btn">
                 Browse
             </span>
