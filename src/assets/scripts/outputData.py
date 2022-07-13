@@ -97,8 +97,7 @@ for filename in files:
                                       changedVars["replaceValue"])
             btestLine[1] = "_".join(temp)
         if changedVars["prefixValue"]:
-            btestLine[1] = changedVars["prefixValue"] + \
-                "_" + btestLine[1]
+            btestLine[1] = changedVars["prefixValue"] + btestLine[1]
 
         # !2. StartDateTime, EndDateTime & Duration
         if changedVars["durationChanged"]:

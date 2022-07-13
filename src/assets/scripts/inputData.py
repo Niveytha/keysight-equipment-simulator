@@ -8,9 +8,9 @@ from datetime import datetime, timedelta
 import random
 import json
 
-test = open("TESTING.txt", "w")
-test.write(sys.argv[1])
-test.close()
+# test = open("TESTING.txt", "w")
+# test.write(sys.argv[1])
+# test.close()
 
 inputPath = sys.argv[1]
 firstFileName = os.listdir(inputPath)[0]
