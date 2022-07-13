@@ -26,7 +26,7 @@ function createMenu() {
         { type: 'separator' },
         { role: 'quit' }
       ]
-    } : {},
+    } : {}, // TODO: add smth here for windows
     {
       label: 'File',
       submenu: [
@@ -77,7 +77,7 @@ function createWindow(): BrowserWindow {
     x: 0,
     y: 0,
     width: 1300,
-    height: 700,
+    height: 800,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,

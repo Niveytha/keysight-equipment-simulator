@@ -22,6 +22,7 @@ export class MainContentComponent implements OnInit {
   public prefixChanged: boolean = false;
   public replaceChanged: boolean = false;
   public prefixValue: string;
+  public findValue: string;
   public replaceValue: string;
 
   public inputPath: string;
@@ -29,12 +30,13 @@ export class MainContentComponent implements OnInit {
 
   @ViewChild("outputFolderName") outputFolderName: ElementRef;
   @ViewChild("boardIDValue") boardIDValue: ElementRef;
-  @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
-  @ViewChild("durationCB") durationCB: ElementRef;
+  // @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
+  // @ViewChild("durationCB") durationCB: ElementRef;
   @ViewChild("newDuration") newDuration: ElementRef;
-  @ViewChild("prefixCB") prefixCB: ElementRef;
+  // @ViewChild("prefixCB") prefixCB: ElementRef;
   @ViewChild("prefix") prefix: ElementRef;
-  @ViewChild("replaceCB") replaceCB: ElementRef;
+  // @ViewChild("replaceCB") replaceCB: ElementRef;
+  @ViewChild("find") find: ElementRef;
   @ViewChild("replace") replace: ElementRef;
   @ViewChild("endDateTimeValue") endDateTimeValue: ElementRef;
 
@@ -89,6 +91,7 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.electronService.getData('sendDataResponse').subscribe(res => console.log(res));
   }
 
   ngAfterViewInit() {
@@ -101,6 +104,7 @@ export class MainContentComponent implements OnInit {
       this.prefixValue = this.prefix.nativeElement.value;
     } 
     if (this.replaceChanged && this.replace.nativeElement.value) {
+      this.findValue= this.find.nativeElement.value;
       this.replaceValue = this.replace.nativeElement.value;
     } 
     if (this.durationChanged && this.newDuration.nativeElement.value) {
@@ -112,10 +116,11 @@ export class MainContentComponent implements OnInit {
       this.uutTypeRev,     // 2
       this.fixtureID,      // 3
       this.controller,     // 4
-      this.boardID,        // 5
-      this.prefixValue,    // 6
-      this.replaceValue,    // 7
-      this.startDateTime,        // 8
+      // this.boardID,        // 5
+      this.prefixValue,    // 5
+      this.findValue,      // 6
+      this.replaceValue,   // 7
+      this.startDateTime,  // 8
       this.startDateTimeChanged, // 9
       this.duration,        // 10
       this.durationChanged, // 11
@@ -147,9 +152,13 @@ export class MainContentComponent implements OnInit {
   // !replace Checkbox
   replaceFunc() {
     this.replaceChanged = !this.replaceChanged;
-    if (this.replaceChanged)
+    if (this.replaceChanged) {
+      this.find.nativeElement.removeAttribute('disabled');
       this.replace.nativeElement.removeAttribute('disabled');
-    else this.replace.nativeElement.setAttribute('disabled', true);
+    } else { 
+      this.find.nativeElement.setAttribute('disabled', true);
+      this.replace.nativeElement.setAttribute('disabled', true);
+    }
   }
 
   // !startDateTime Checkbox

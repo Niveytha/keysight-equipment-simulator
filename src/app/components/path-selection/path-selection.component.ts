@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ElectronService } from '../../core/services';
 
 @Component({
   selector: 'app-path-selection',
@@ -12,13 +13,17 @@ export class PathSelectionComponent implements OnInit {
   @ViewChild("inputFolderName") inputFolderName: ElementRef;
   
   constructor(
-    // private electronService: ElectronService,
+    private electronService: ElectronService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
+  sendData() {
+    console.log(this.inputPath);
+    this.electronService.sendData(this.inputPath, 'sendInputPath');
+  }
   // sendInputPath() {
   //   console.log(this.inputPath);
   //   this.electronService.sendData(this.inputPath, 'sendData');
