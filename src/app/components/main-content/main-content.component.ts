@@ -50,12 +50,6 @@ export class MainContentComponent implements OnInit {
       console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
       console.log('NodeJS childProcess', this.electronService.childProcess);
 
-      // TODO: What is this for?
-      const data: string[] = ['test', 'test2'];
-
-      // Sending Data To Electron
-      this.electronService.sendData(data, 'getData');
-
       // Receiving Data From Electron
       this.electronService.getData('getDataResponse').subscribe((res) => {
         console.log(res, 'Electron Data');
@@ -96,7 +90,13 @@ export class MainContentComponent implements OnInit {
 
   ngAfterViewInit() {
     this.inputPath = history.state.input;
-    this.electronService.sendData([this.inputPath], 'sendInputPath');
+    console.log(this.inputPath);
+    // TODO: What is this for?
+    const data: string[] = [this.inputPath, 'test2'];
+
+    // Sending Data To Electron
+    this.electronService.sendData(data, 'getData');
+    // this.electronService.sendData([this.inputPath], 'sendInputPath');
   }
 
   sendData() {

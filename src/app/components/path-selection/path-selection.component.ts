@@ -20,13 +20,9 @@ export class PathSelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sendData() {
-    console.log(this.inputPath);
-    this.electronService.sendData(this.inputPath, 'sendInputPath');
-  }
-  // sendInputPath() {
-  //   console.log(this.inputPath);
-  //   this.electronService.sendData(this.inputPath, 'sendData');
+  // sendData() {
+  //   console.log("FROM PATHSELECTION: " + this.inputPath);
+  //   this.electronService.sendData(this.inputPath, 'sendInputPath');
   // }
 
   sendToMainComponent(){
