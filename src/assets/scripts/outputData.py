@@ -60,9 +60,9 @@ files = [f for f in listdir(inputFolderPath)
 outputFolder = changedVars["outputPath"]
 
 # !delete old output files if folder is not empty
-if len(listdir(outputFolder)) != 0:
-    for oldFile in listdir(outputFolder):
-        remove(join(outputFolder, oldFile))
+# if len(listdir(outputFolder)) != 0:
+for oldFile in listdir(outputFolder):
+    remove(join(outputFolder, oldFile))
 
 if changedVars["startDateTimeChanged"]:
     currentStartTime = datetime.now()
