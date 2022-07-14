@@ -92,10 +92,12 @@ for filename in files:
 
         # !1. Find & Replace BoardID
         if changedVars["findValue"] and changedVars["replaceValue"]:
-            temp = btestLine[1].split("_")
-            temp[0] = temp[0].replace(changedVars["findValue"],
-                                      changedVars["replaceValue"])
-            btestLine[1] = "_".join(temp)
+            # temp = btestLine[1].split("_")
+            # temp[0] = temp[0].replace(changedVars["findValue"],
+            #                           changedVars["replaceValue"])
+            # btestLine[1] = "_".join(temp)
+            btestLine[1] = btestLine[1].replace(changedVars["findValue"],
+                                                changedVars["replaceValue"])
         if changedVars["prefixValue"]:
             btestLine[1] = changedVars["prefixValue"] + btestLine[1]
 
