@@ -50,8 +50,7 @@ elif changedVars["duration"] == 1:
 elif changedVars["duration"] == 0:
     durationVariations = [0, 1, 2, 3, 4]
 
-inputFolderPath = "src/assets/scripts/i3070_Logs (Approach 1)"
-# inputFolderPath = "/Users/niveytha/Documents/My Documents/Coding/Learn-Angular-Electron/keysight-equipment-simulator/src/assets/scripts/i3070_Logs (Approach 1)"
+inputFolderPath = changedVars["inputPath"]
 
 # !inputFolderPath = changedVars["inputPath"]
 files = [f for f in listdir(inputFolderPath)
