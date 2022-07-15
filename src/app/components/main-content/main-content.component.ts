@@ -86,7 +86,6 @@ export class MainContentComponent implements OnInit {
 
   ngAfterViewInit() {
     this.inputPath = history.state.input;
-    console.log(this.inputPath);
     // TODO: What is this for?
     const data: string[] = [this.inputPath, 'test2'];
 
@@ -126,7 +125,8 @@ export class MainContentComponent implements OnInit {
   }
 
   outputFolderPicked(files) {
-    this.outputPath = files[0].path.split("/").slice(0, -1).join("/");
+    // this.outputPath = files[0].path.split("\\").slice(0, -1).join("/");  // macOS
+    this.outputPath = files[0].path.split("\\").slice(0, -1).join("/");  // Windows
     this.outputFolderName.nativeElement.innerHTML = this.outputPath;
   }
 

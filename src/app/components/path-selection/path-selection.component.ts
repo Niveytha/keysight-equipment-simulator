@@ -24,7 +24,8 @@ export class PathSelectionComponent implements OnInit {
   }
 
   inputFolderPicked(files) {
-    this.inputPath = files[0].path.split("/").slice(0, -1).join("/");
+    // this.inputPath = files[0].path.split("/").slice(0, -1).join("/");   // macOS
+    this.inputPath = files[0].path.split("\\").slice(0, -1).join("/");  // Windows
     this.inputFolderName.nativeElement.innerHTML = this.inputPath;
   }
 }
