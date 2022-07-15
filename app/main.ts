@@ -45,7 +45,7 @@ function createMenu() {
         { role: 'cut' },
         { role: 'copy' },
         { role: 'paste' },
-        isMac ? { role: 'pasteAndMatchStyle' }: { },
+        isMac ? { role: 'pasteAndMatchStyle' }: {role: 'paste' },
         { role: 'delete' },
         { type: 'separator' },
         { role: 'selectAll' }

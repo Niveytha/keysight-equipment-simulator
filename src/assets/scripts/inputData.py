@@ -5,6 +5,8 @@ import random
 import json
 
 inputPath = sys.argv[1]
+# inputPath = "C:/Users/nivemadh/Documents/Intern Project/Sample_Logs/i3070_Logs"
+# inputPath = "C:/Users/nivemadh/Documents/Intern Project"
 firstFileName = os.listdir(inputPath)[0]
 f = open(os.path.join(inputPath, firstFileName), 'r')
 
