@@ -10,11 +10,6 @@ import { FinalPageComponent } from './components/final-page/final-page.component
 import { PathSelectionComponent } from './components/path-selection/path-selection.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
   { path: '', component: PathSelectionComponent },
   { path: 'main-content', component: MainContentComponent },
   { path: 'alert-simulation', component: AlertSimulationPageComponent },

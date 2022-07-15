@@ -22,11 +22,6 @@ select:required:invalid {
 }
 
 select {
-    /* styling */
-    /* height: 40px;
-    width: 240px;
-    padding-left: 10px; */
-
     background-color: #464646;
     border: none;
     border-radius: 6px;
@@ -64,6 +59,3 @@ select {
 option[value=""][disabled] {
     display: none;
 }
-/* option {
-    color: black;
-} */

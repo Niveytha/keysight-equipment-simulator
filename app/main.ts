@@ -4,8 +4,6 @@ import * as fs from 'fs';
 import * as url from 'url';
 
 const { PythonShell } = require('python-shell');
-// const { dialog } = require('electron')
-// console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -26,7 +24,12 @@ function createMenu() {
         { type: 'separator' },
         { role: 'quit' }
       ]
-    } : {}, // TODO: add smth here for windows
+    } : {
+      label: app.name,
+      submenu: [
+        { role: 'quit' }
+      ]
+    }, // TODO: add smth here for windows
     {
       label: 'File',
       submenu: [
@@ -69,15 +72,12 @@ function createMenu() {
 }
 
 function createWindow(): BrowserWindow {
-  // const electronScreen = screen;
-  // const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
   // Create the browser window.
   win = new BrowserWindow({
     x: 0,
     y: 0,
     width: 1300,
-    height: 800,
+    height: 810,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -128,30 +128,6 @@ function createWindow(): BrowserWindow {
   return win;
 }
 
-
-// !Run Python scripts below
-// let pyshell = new PythonShell('src/assets/scripts/script1.py');
-
-// pyshell.send(JSON.stringify([10]))
-// let options = {
-//   mode: 'text',
-//   pythonPath: 'Your python path',
-//   pythonOptions: ['-u'],
-//   scriptPath: 'Your script path',
-//   args: [10]
-// };
-
-// pyshell.on('message', function(message) {
-//   console.log(message);
-// })
-
-// pyshell.end(function (err) {
-//   if (err){
-//     throw err;
-//   };
-//   console.log('finished');
-// });
-
 // !get input data
 ipcMain.on('getData', (event, args) => {
   let pathIndex = '../src/assets/scripts';
@@ -185,7 +161,6 @@ ipcMain.on('sendInputPath', (event, args) => {
   PythonShell.run('inputData.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
-    // console.log('AFTER2: ', result); // !result is NULL
 
     console.log("Input Path sent successfully!")
 
@@ -207,7 +182,6 @@ ipcMain.on('sendData', (event, args) => {
   PythonShell.run('outputData.py', options, (err, result) => {
     if (err) throw err;
     // result is an array consisting of messages collected during execution of script.
-    // console.log('AFTER2: ', result); // !result is NULL
 
     console.log("Values sent successfully!")
 
@@ -215,22 +189,6 @@ ipcMain.on('sendData', (event, args) => {
     event.reply('sendDataResponse', result);
   });
 });
-
-/*********************************************************************
-try {
-  // Method 2 (Run Python Scripts)
-  let pathIndex = '../src/assets/scripts/script1.py';
-
-  const python = spawn('python', [path.join(__dirname, pathIndex), 'node.js', 'python']);
-
-  python.stdout.on('data', (data) => {
-    console.log('Pipe data from python script ...', data);
-    largeDataSet.push(data);
-  });
-} catch (e) {
-  throw e;
-}
-*********************************************************************/
 // !Run Python scripts above
 
 

@@ -13,21 +13,13 @@ export class PathSelectionComponent implements OnInit {
   @ViewChild("inputFolderName") inputFolderName: ElementRef;
   
   constructor(
-    private electronService: ElectronService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  // sendData() {
-  //   console.log("FROM PATHSELECTION: " + this.inputPath);
-  //   this.electronService.sendData(this.inputPath, 'sendInputPath');
-  // }
-
   sendToMainComponent(){
-    // this.router.navigate(["/main-content"], {state: {input: this.inputPath, output: this.outputPath}});
-    // this.router.navigate(["/main-content", {input: this.inputPath, output: this.outputPath}]);
     this.router.navigate(["/main-content"], {state: {input: this.inputPath}});
   }
 

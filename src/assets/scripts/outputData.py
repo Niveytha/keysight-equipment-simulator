@@ -1,4 +1,3 @@
-# !CHANGE FILE NAME ACCORDING TO CHANGES
 import sys
 import json
 from os import listdir, mkdir, remove
@@ -6,9 +5,6 @@ from os.path import isfile, join
 from datetime import datetime, timedelta
 from random import choice
 import time
-
-# f = open("src/assets/scripts/i3070_Logs/P1479299-00-D_SPGT19088002596-190503103132-MY58120165-Pass.txt", 'r')
-# g = open("src/assets/scripts/i3070_Logs/output_file.txt", 'w')
 
 changedVars = {"uutType": sys.argv[1],
                "uutTypeRev": sys.argv[2],
@@ -25,23 +21,6 @@ changedVars = {"uutType": sys.argv[1],
                "inputPath": sys.argv[13],
                "outputPath": sys.argv[14]
                }
-
-# !testing - to be deleted
-# changedVars = {"uutType": "KEYS_1479299-00-D",
-#                "uutTypeRev": "T2",
-#                "fixtureID": "T2",
-#                "controller": "KEYS58120165",
-#                "prefixValue": "NIVI",
-#                "findValue": "",
-#                "replaceValue": "",
-#                "startDateTime": "190503103136",
-#                "startDateTimeChanged": True,
-#                "duration": int("000000"),
-#                "durationChanged": True,
-#                "endDateTime": "190503103149",
-#                "inputPath": "hi",
-#                "outputPath": "/Users/niveytha/Downloads/New Folder"
-#                }
 
 if changedVars["duration"] >= 2:
     durationVariations = [-2, -1, 0, 1, 2]
@@ -72,7 +51,6 @@ else:
 originalDuration = changedVars["duration"]
 
 outputFilesCount = 0
-# try:
 for filename in files:
     try:
         f = open(join(inputFolderPath, filename), 'r')
@@ -91,10 +69,6 @@ for filename in files:
 
         # !1. Find & Replace BoardID
         if changedVars["findValue"] and changedVars["replaceValue"]:
-            # temp = btestLine[1].split("_")
-            # temp[0] = temp[0].replace(changedVars["findValue"],
-            #                           changedVars["replaceValue"])
-            # btestLine[1] = "_".join(temp)
             btestLine[1] = btestLine[1].replace(changedVars["findValue"],
                                                 changedVars["replaceValue"])
         if changedVars["prefixValue"]:
@@ -135,8 +109,3 @@ for filename in files:
         g.close()
     except:
         print("An exception occurred (probably .DS_Store)!")
-# except:
-#     print("Something went wrong!")
-# else:
-#     print("All " + outputFilesCount +
-#           "files have been generated successfully!")  # success message

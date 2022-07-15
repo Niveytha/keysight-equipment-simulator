@@ -30,12 +30,8 @@ export class MainContentComponent implements OnInit {
 
   @ViewChild("outputFolderName") outputFolderName: ElementRef;
   @ViewChild("boardIDValue") boardIDValue: ElementRef;
-  // @ViewChild("startDateTimeCB") startDateTimeCB: ElementRef;
-  // @ViewChild("durationCB") durationCB: ElementRef;
   @ViewChild("newDuration") newDuration: ElementRef;
-  // @ViewChild("prefixCB") prefixCB: ElementRef;
   @ViewChild("prefix") prefix: ElementRef;
-  // @ViewChild("replaceCB") replaceCB: ElementRef;
   @ViewChild("find") find: ElementRef;
   @ViewChild("replace") replace: ElementRef;
   @ViewChild("endDateTimeValue") endDateTimeValue: ElementRef;
@@ -96,7 +92,6 @@ export class MainContentComponent implements OnInit {
 
     // Sending Data To Electron
     this.electronService.sendData(data, 'getData');
-    // this.electronService.sendData([this.inputPath], 'sendInputPath');
   }
 
   sendData() {
@@ -116,7 +111,6 @@ export class MainContentComponent implements OnInit {
       this.uutTypeRev,     // 2
       this.fixtureID,      // 3
       this.controller,     // 4
-      // this.boardID,        // 5
       this.prefixValue,    // 5
       this.findValue,      // 6
       this.replaceValue,   // 7
@@ -130,11 +124,6 @@ export class MainContentComponent implements OnInit {
     ];
     this.electronService.sendData(data, 'sendData');
   }
-
-  // onSubmit(result) {
-  //   console.log("Form submitted!");
-  //   alert('FORM SUBMITTED!');
-  // }
 
   outputFolderPicked(files) {
     this.outputPath = files[0].path.split("/").slice(0, -1).join("/");
@@ -173,30 +162,4 @@ export class MainContentComponent implements OnInit {
       this.newDuration.nativeElement.removeAttribute('disabled');
     else this.newDuration.nativeElement.setAttribute('disabled', true);
   }
-
-  // TODO: Examples (to be deleted)
-  // chooseFile() {
-  //   dialog.showOpenDialog({
-  //     defaultPath: app.getPath("documents"),
-  //     properties: ['openDirectory'],
-  //     buttonLabel: 'Select a folder'
-  //   })
-  //   .then((result) => {
-  //     console.log("result", result)
-  //   });
-  // }
-
-  // @ViewChild("myNameElem1") myNameElem1: ElementRef;
-  // getValue1() {
-  //   console.log(this.myNameElem1);
-  //   this.myNameElem1.nativeElement.innerHTML = "After change";
-  // }
-
-  // @ViewChild('myNameElem2') myNameElem2: ElementRef;
-  // getValue2() {
-  //   console.log(this.myNameElem2.nativeElement.value);
-  // }
-  // resetValue() {
-  //   this.myNameElem2.nativeElement.value = '';
-  // }
 }
